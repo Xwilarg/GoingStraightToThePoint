@@ -11,7 +11,7 @@ namespace TF2Jam.Player
         private PlayerInfo _info;
 
         private Rigidbody2D _rb;
-        private SpriteRenderer _sr;
+        private Animator _anim;
         private float _mov;
         private Camera _cam;
         private int _jumpIgnoreMask;
@@ -23,7 +23,7 @@ namespace TF2Jam.Player
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _sr = GetComponent<SpriteRenderer>();
+            _anim = GetComponent<Animator>();
             _cam = Camera.main;
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
@@ -39,6 +39,11 @@ namespace TF2Jam.Player
                 {
                     _lastValidPos = transform.position;
                 }
+                _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
+            }
+            else
+            {
+                _anim.SetBool("IsWalking", false);
             }
         }
 
@@ -65,11 +70,11 @@ namespace TF2Jam.Player
             _mov = value.ReadValue<Vector2>().x;
             if (_mov > 0f)
             {
-                _sr.flipX = false;
+                _anim.SetBool("IsGoingRight", true);
             }
             else if (_mov < 0f)
             {
-                _sr.flipX = true;
+                _anim.SetBool("IsGoingRight", false);
             }
         }
 
