@@ -18,20 +18,35 @@ namespace TF2Jam.Player
 
         private bool _canShoot = true;
 
+        private Vector2 _lastValidPos;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _cam = Camera.main;
-            _jumpIgnoreMask = ~(1 << LayerMask.NameToLayer("Player"));
+            _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
+            _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
+            _jumpIgnoreMask = ~_jumpIgnoreMask;
         }
 
         private void FixedUpdate()
         {
-            if (IsOnFloor)
+            if (IsOnFloor(out string tag))
             {
                 _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
+                if (tag == "Floor")
+                {
+                    _lastValidPos = transform.position;
+                }
             }
+            Debug.Log(_rb.velocity);
+        }
+
+        public void ResetPos()
+        {
+            transform.position = _lastValidPos;
+            _rb.velocity = Vector2.zero;
         }
 
         public void AddPropulsionForce(float force, Vector2 direction)
@@ -60,7 +75,7 @@ namespace TF2Jam.Player
 
         public void OnJump(InputAction.CallbackContext value)
         {
-            if (value.performed && IsOnFloor)
+            if (value.performed && IsOnFloor(out _))
             {
                 _rb.AddForce(Vector2.up * _info.JumpForce, ForceMode2D.Impulse);
             }
@@ -85,13 +100,16 @@ namespace TF2Jam.Player
             }
         }
 
-        private bool IsOnFloor
+        private bool IsOnFloor(out string tag)
         {
-            get
+            var ray = Physics2D.Raycast(transform.position, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
+            if (ray.collider != null && ray.distance < _info.FloorDistanceForJump)
             {
-                var ray = Physics2D.Raycast(transform.position, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
-                return ray.collider != null && ray.distance < _info.FloorDistanceForJump;
+                tag = ray.collider.tag;
+                return true;
             }
+            tag = null;
+            return false;
         }
     }
 }
