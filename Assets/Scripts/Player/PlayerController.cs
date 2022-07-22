@@ -1,3 +1,4 @@
+using System.Collections;
 using TF2Jam.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +15,8 @@ namespace TF2Jam.Player
         private float _mov;
         private Camera _cam;
         private int _jumpIgnoreMask;
+
+        private bool _canShoot = true;
 
         private void Awake()
         {
@@ -34,6 +37,12 @@ namespace TF2Jam.Player
         public void AddPropulsionForce(float force, Vector2 direction)
         {
             _rb.AddForce(direction * force, ForceMode2D.Impulse);
+        }
+
+        private IEnumerator Reload()
+        {
+            yield return new WaitForSeconds(_info.ReloadTime);
+            _canShoot = true;
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -59,7 +68,7 @@ namespace TF2Jam.Player
 
         public void OnAction(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && _canShoot)
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
@@ -70,6 +79,9 @@ namespace TF2Jam.Player
                 go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * _info.RocketSpeed);
                 go.GetComponent<Bullet>().Init(this);
                 Destroy(go, 10f);
+
+                _canShoot = false;
+                StartCoroutine(Reload());
             }
         }
 

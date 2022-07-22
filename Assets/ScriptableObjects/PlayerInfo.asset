@@ -17,3 +17,4 @@ MonoBehaviour:
   JumpForce: 5
   FloorDistanceForJump: 1.21
   RocketPrefab: {fileID: 1831645116702727911, guid: 497ea68906fc14e44b50fba455a7f775, type: 3}
+  ReloadTime: 0.5
