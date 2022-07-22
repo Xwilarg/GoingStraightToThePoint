@@ -13,17 +13,27 @@ namespace TF2Jam.Player
         private SpriteRenderer _sr;
         private float _mov;
         private Camera _cam;
+        private int _jumpIgnoreMask;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _sr = GetComponent<SpriteRenderer>();
             _cam = Camera.main;
+            _jumpIgnoreMask = ~(1 << LayerMask.NameToLayer("Player"));
         }
 
         private void FixedUpdate()
         {
-            _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
+            if (IsOnFloor)
+            {
+                _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
+            }
+        }
+
+        public void AddPropulsionForce(float force, Vector2 direction)
+        {
+            _rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
 
         public void OnMovement(InputAction.CallbackContext value)
@@ -41,7 +51,7 @@ namespace TF2Jam.Player
 
         public void OnJump(InputAction.CallbackContext value)
         {
-            if (value.performed)
+            if (value.performed && IsOnFloor)
             {
                 _rb.AddForce(Vector2.up * _info.JumpForce, ForceMode2D.Impulse);
             }
@@ -58,7 +68,17 @@ namespace TF2Jam.Player
                 float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
                 go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * _info.RocketSpeed);
+                go.GetComponent<Bullet>().Init(this);
                 Destroy(go, 10f);
+            }
+        }
+
+        private bool IsOnFloor
+        {
+            get
+            {
+                var ray = Physics2D.Raycast(transform.position, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
+                return ray.collider != null && ray.distance < _info.FloorDistanceForJump;
             }
         }
     }
