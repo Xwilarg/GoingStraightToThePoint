@@ -40,7 +40,6 @@ namespace TF2Jam.Player
                     _lastValidPos = transform.position;
                 }
             }
-            Debug.Log(_rb.velocity);
         }
 
         public void ResetPos()
@@ -51,6 +50,7 @@ namespace TF2Jam.Player
 
         public void AddPropulsionForce(float force, Vector2 direction)
         {
+            _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y));
             _rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
 
