@@ -60,6 +60,10 @@ namespace TF2Jam.Player
             {
                 _anim.SetBool("IsWalking", false);
             }
+            if (transform.position.y < -5f)
+            {
+                ResetPos();
+            }
         }
 
         public void ResetPos()
