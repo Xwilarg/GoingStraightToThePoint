@@ -10,6 +10,19 @@ namespace TF2Jam.Player
         [SerializeField]
         private PlayerInfo _info;
 
+        private bool _didWin;
+        public bool DidWin {
+            set
+            {
+                _didWin = value;
+                if (_didWin)
+                {
+                    _rb.velocity = Vector2.zero;
+                }
+            }
+            private get => _didWin;
+        }
+
         private Rigidbody2D _rb;
         private Animator _anim;
         private float _mov;
@@ -32,7 +45,7 @@ namespace TF2Jam.Player
 
         private void FixedUpdate()
         {
-            if (IsOnFloor(out string tag))
+            if (!DidWin && IsOnFloor(out string tag))
             {
                 _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
                 if (tag == "Floor")
@@ -67,6 +80,10 @@ namespace TF2Jam.Player
 
         public void OnMovement(InputAction.CallbackContext value)
         {
+            if (DidWin)
+            {
+                return;
+            }
             _mov = value.ReadValue<Vector2>().x;
             if (_mov > 0f)
             {
@@ -80,7 +97,7 @@ namespace TF2Jam.Player
 
         public void OnJump(InputAction.CallbackContext value)
         {
-            if (value.performed && IsOnFloor(out _))
+            if (value.performed && !DidWin && IsOnFloor(out _))
             {
                 _rb.AddForce(Vector2.up * _info.JumpForce, ForceMode2D.Impulse);
             }
@@ -88,7 +105,7 @@ namespace TF2Jam.Player
 
         public void OnAction(InputAction.CallbackContext value)
         {
-            if (value.performed && _canShoot)
+            if (value.performed && !DidWin && _canShoot)
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TF2Jam.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,6 +48,13 @@ namespace TF2Jam.Objective
                 if (_index < _controlPoints.Length)
                 {
                     _controlPoints[_index].UI.sprite = _sprUnlocked;
+                }
+                else // We got all CP
+                {
+                    foreach (var pc in GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<PlayerController>()))
+                    {
+                        pc.DidWin = true;
+                    }
                 }
                 return true;
             }
