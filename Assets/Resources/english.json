@@ -5,10 +5,18 @@
 
     "tutorial1-1": "How to rocket jump easily:",
     "tutorial1-2": "Use mouse 1 to shoot underneath you!",
+
     "tutorial2-1": "Need to jump higher?",
     "tutorial2-2": "Try to jump right before shooting!",
     "tutorial2-3": "Train yourself at finding a nice angle and cross this cliff!",
+
     "tutorial3-1": "Capture all control points to win!",
+
     "tutorial4-1": "Loosing too much speed while touching the ground?",
-    "tutorial4-2": "While you are in the air shoot towards the floor and try to time your rocket so it explodes right before you land"
+    "tutorial4-2": "While you are in the air shoot towards the floor and try to time your rocket so it explodes right before you land",
+
+    "tutorial5-1": "You can also use the techniques learnt before to walljump",
+
+    "tutorial6-1": "Wall is too high? Propulse yourself upward",
+    "tutorial6-2": "And while in the air, shoot a rocket again to gain more vertical velocity when it'll explodes"
 }
