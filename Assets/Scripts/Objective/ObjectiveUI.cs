@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TF2Jam.Menu;
 using TF2Jam.Player;
 using TMPro;
 using UnityEngine;
@@ -30,6 +31,9 @@ namespace TF2Jam.Objective
 
         [SerializeField]
         private TMP_Text _timerDisplay;
+
+        [SerializeField]
+        private GameObject _winMenu;
 
         private float _timer;
 
@@ -84,6 +88,9 @@ namespace TF2Jam.Objective
                         pc.DidWin = true;
                     }
                     DidWin = true;
+
+                    _winMenu.SetActive(true);
+                    _winMenu.GetComponent<VictoryMenu>().Init(_timer);
                 }
                 return true;
             }
