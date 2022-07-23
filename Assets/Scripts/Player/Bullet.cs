@@ -25,6 +25,7 @@ namespace TF2Jam.Player
                 var propForce = (1f - force / _info.RocketImpactMaxDistance) * _info.RocketPropulsionForce;
                 _owner.AddPropulsionForce(propForce, (Vector2)_owner.transform.position - contact);
             }
+            Instantiate(_info.ExplosionPrefab, contact, Quaternion.identity);
             Destroy(gameObject);
         }
     }

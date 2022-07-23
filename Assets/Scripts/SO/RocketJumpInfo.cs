@@ -7,5 +7,7 @@ namespace TF2Jam.SO
     {
         public float RocketImpactMaxDistance;
         public float RocketPropulsionForce;
+
+        public GameObject ExplosionPrefab;
     }
 }
