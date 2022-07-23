@@ -1,8 +1,10 @@
 ﻿using System.Linq;
 using TF2Jam.Menu;
+using TF2Jam.Persistency;
 using TF2Jam.Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TF2Jam.Objective
@@ -91,6 +93,8 @@ namespace TF2Jam.Objective
 
                     _winMenu.SetActive(true);
                     _winMenu.GetComponent<VictoryMenu>().Init(_timer);
+
+                    PersistencyManager.Instance.FinishLevel(SceneManager.GetActiveScene().name, _timer);
                 }
                 return true;
             }
