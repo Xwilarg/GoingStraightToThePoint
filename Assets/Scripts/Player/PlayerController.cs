@@ -1,4 +1,5 @@
 using System.Collections;
+using TF2Jam.Menu;
 using TF2Jam.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -119,6 +120,22 @@ namespace TF2Jam.Player
 
                 _canShoot = false;
                 StartCoroutine(Reload());
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                PauseMenu.Instance.Toggle();
+            }
+        }
+
+        public void OnApplicationFocus(bool focus)
+        {
+            if (!focus)
+            {
+                PauseMenu.Instance.ForcePause();
             }
         }
 
