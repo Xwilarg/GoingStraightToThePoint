@@ -9,22 +9,11 @@ namespace TF2Jam.Menu
         [SerializeField]
         private GameObject _container;
 
-        [SerializeField]
-        private TMP_Text _timerDisplay;
-
         public static PauseMenu Instance { get; private set; }
-
-        private float _timer;
 
         private void Awake()
         {
             Instance = this;
-        }
-
-        private void Update()
-        {
-            _timer += Time.deltaTime;
-            _timerDisplay.text = $"{_timer:0.00}";
         }
 
         public void Toggle()

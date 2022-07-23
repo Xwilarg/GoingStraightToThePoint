@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using TF2Jam.Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ namespace TF2Jam.Objective
             Instance = this;
         }
 
+        public bool IsTimerActive { set; private get; }
+
         [SerializeField]
         private Transform _container;
 
@@ -22,6 +25,11 @@ namespace TF2Jam.Objective
 
         [SerializeField]
         private Sprite _sprUnlocked, _sprCaptured;
+
+        [SerializeField]
+        private TMP_Text _timerDisplay;
+
+        private float _timer;
 
         private CPUI[] _controlPoints;
 
@@ -44,6 +52,15 @@ namespace TF2Jam.Objective
             }
 
             _controlPoints[0].UI.sprite = _sprUnlocked;
+        }
+
+        private void Update()
+        {
+            if (IsTimerActive)
+            {
+                _timer += Time.deltaTime;
+                _timerDisplay.text = $"{_timer:0.00}";
+            }
         }
 
         public Vector2 LatestCaptured => _index == 0 ? Vector2.zero : ((Vector2)_controlPoints[_index - 1].CP.transform.position + Vector2.up); // TODO: Fix pos if index is 0

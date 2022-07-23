@@ -84,10 +84,12 @@ namespace TF2Jam.Player
             if (_mov > 0f)
             {
                 _anim.SetBool("IsGoingRight", true);
+                ObjectiveUI.Instance.IsTimerActive = true;
             }
             else if (_mov < 0f)
             {
                 _anim.SetBool("IsGoingRight", false);
+                ObjectiveUI.Instance.IsTimerActive = true;
             }
         }
 
@@ -96,6 +98,7 @@ namespace TF2Jam.Player
             if (value.performed && !DidWin && IsOnFloor(out _))
             {
                 _rb.AddForce(Vector2.up * _info.JumpForce, ForceMode2D.Impulse);
+                ObjectiveUI.Instance.IsTimerActive = true;
             }
         }
 
@@ -115,6 +118,7 @@ namespace TF2Jam.Player
 
                 _canShoot = false;
                 StartCoroutine(Reload());
+                ObjectiveUI.Instance.IsTimerActive = true;
             }
         }
 
