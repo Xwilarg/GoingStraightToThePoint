@@ -51,10 +51,23 @@ namespace TF2Jam.Player
 
         private void FixedUpdate()
         {
-            if (!DidWin && IsOnFloor(out string tag))
+            if (!DidWin)
             {
-                _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
-                _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
+                if (IsOnFloor(out string _))
+                {
+                    _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
+                    _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
+                }
+                else
+                {
+                    var maxSpeed = _info.Speed * Time.deltaTime;
+                    var curr = _info.Speed * Time.deltaTime * _mov * .01f + _rb.velocity.x;
+                    if (Mathf.Abs(curr) < maxSpeed)
+                    {
+                        _rb.velocity = new Vector2(curr, _rb.velocity.y);
+                    }
+                    _anim.SetBool("IsWalking", false);
+                }
             }
             else
             {
