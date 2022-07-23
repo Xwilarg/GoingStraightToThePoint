@@ -15415,18 +15415,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionId
       value: d4982bbc-a676-4843-8d42-46bb2d0660b7
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: bf251878-1dab-4fd0-a85e-554d324d2943
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionName
       value: Player/Pause[/Keyboard/escape]
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/Restart[/Keyboard/r]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
@@ -15434,7 +15446,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 536733684}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 536733684}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
@@ -15442,15 +15462,31 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRestart
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TF2Jam.Player.PlayerController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TF2Jam.Player.PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218384614807451411, guid: 4bd2723922837ff4589fbde6ff429c86, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -134,6 +134,15 @@ namespace TF2Jam.Player
             }
         }
 
+        public void OnRestart(InputAction.CallbackContext value)
+        {
+            if (value.performed && !DidWin)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+
         public void OnApplicationFocus(bool focus)
         {
             if (!focus)
