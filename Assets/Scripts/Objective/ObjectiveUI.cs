@@ -7,6 +7,13 @@ namespace TF2Jam.Objective
 {
     public class ObjectiveUI : MonoBehaviour
     {
+        public static ObjectiveUI Instance { get; private set; }
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         [SerializeField]
         private Transform _container;
 
@@ -38,6 +45,8 @@ namespace TF2Jam.Objective
 
             _controlPoints[0].UI.sprite = _sprUnlocked;
         }
+
+        public Vector2 LatestCaptured => _index == 0 ? Vector2.zero : ((Vector2)_controlPoints[_index - 1].CP.transform.position + Vector2.up); // TODO: Fix pos if index is 0
 
         public bool Capture(ControlPoint cp)
         {

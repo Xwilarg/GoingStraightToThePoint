@@ -1,5 +1,6 @@
 using System.Collections;
 using TF2Jam.Menu;
+using TF2Jam.Objective;
 using TF2Jam.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,8 +33,6 @@ namespace TF2Jam.Player
 
         private bool _canShoot = true;
 
-        private Vector2 _lastValidPos;
-
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -49,10 +48,6 @@ namespace TF2Jam.Player
             if (!DidWin && IsOnFloor(out string tag))
             {
                 _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
-                if (tag == "Floor")
-                {
-                    _lastValidPos = transform.position;
-                }
                 _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
             }
             else
@@ -63,7 +58,7 @@ namespace TF2Jam.Player
 
         public void ResetPos()
         {
-            transform.position = _lastValidPos;
+            transform.position = ObjectiveUI.Instance.LatestCaptured;
             _rb.velocity = Vector2.zero;
         }
 
