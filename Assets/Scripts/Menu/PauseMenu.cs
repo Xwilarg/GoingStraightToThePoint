@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TF2Jam.Menu
@@ -42,11 +41,13 @@ namespace TF2Jam.Menu
 
         public void Restart()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void Menu()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
         }
     }

@@ -4,6 +4,7 @@ using TF2Jam.Objective;
 using TF2Jam.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace TF2Jam.Player
 {
@@ -13,7 +14,8 @@ namespace TF2Jam.Player
         private PlayerInfo _info;
 
         private bool _didWin;
-        public bool DidWin {
+        public bool DidWin
+        {
             set
             {
                 _didWin = value;
@@ -41,6 +43,8 @@ namespace TF2Jam.Player
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
             _jumpIgnoreMask = ~_jumpIgnoreMask;
+
+            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
         }
 
         private void FixedUpdate()
