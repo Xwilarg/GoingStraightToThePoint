@@ -69,7 +69,7 @@ namespace TF2Jam.Objective
             }
         }
 
-        public Vector2 LatestCaptured => _index == 0 ? Vector2.zero : ((Vector2)_controlPoints[_index - 1].CP.transform.position + Vector2.up); // TODO: Fix pos if index is 0
+        public Vector2? LatestCaptured => _index == 0 ? null : ((Vector2)_controlPoints[_index - 1].CP.transform.position + Vector2.up); // TODO: Fix pos if index is 0
 
         public bool Capture(ControlPoint cp)
         {

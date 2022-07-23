@@ -32,6 +32,7 @@ namespace TF2Jam.Player
         private float _mov;
         private Camera _cam;
         private int _jumpIgnoreMask;
+        private Vector2 _spawnPos;
 
         private bool _canShoot = true;
 
@@ -43,6 +44,7 @@ namespace TF2Jam.Player
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
             _jumpIgnoreMask = ~_jumpIgnoreMask;
+            _spawnPos = transform.position;
 
             SceneManager.LoadScene("UI", LoadSceneMode.Additive);
         }
@@ -62,7 +64,7 @@ namespace TF2Jam.Player
 
         public void ResetPos()
         {
-            transform.position = ObjectiveUI.Instance.LatestCaptured;
+            transform.position = ObjectiveUI.Instance.LatestCaptured ?? _spawnPos;
             _rb.velocity = Vector2.zero;
         }
 
