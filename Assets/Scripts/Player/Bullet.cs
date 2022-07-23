@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using TF2Jam.Player;
 using TF2Jam.SO;
 using UnityEngine;
 
-namespace TF2Jam
+namespace TF2Jam.Player
 {
     public class Bullet : MonoBehaviour
     {
