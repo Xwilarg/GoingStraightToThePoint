@@ -18,7 +18,7 @@ namespace TF2Jam.Player
                 _didWin = value;
                 if (_didWin)
                 {
-                    _rb.velocity = Vector2.zero;
+                    Time.timeScale = 0f;
                 }
             }
             private get => _didWin;
