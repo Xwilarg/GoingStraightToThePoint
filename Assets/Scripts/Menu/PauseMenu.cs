@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TF2Jam.Objective;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TF2Jam.Menu
@@ -30,6 +31,10 @@ namespace TF2Jam.Menu
 
         public void ForcePause()
         {
+            if (ObjectiveUI.Instance.DidWin)
+            {
+                return;
+            }
             _container.SetActive(true);
             Time.timeScale = 0f;
         }

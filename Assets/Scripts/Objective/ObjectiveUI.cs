@@ -17,6 +17,8 @@ namespace TF2Jam.Objective
 
         public bool IsTimerActive { set; private get; }
 
+        public bool DidWin { private set; get; }
+
         [SerializeField]
         private Transform _container;
 
@@ -81,6 +83,7 @@ namespace TF2Jam.Objective
                     {
                         pc.DidWin = true;
                     }
+                    DidWin = true;
                 }
                 return true;
             }
