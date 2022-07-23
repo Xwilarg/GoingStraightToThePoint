@@ -2007,7 +2007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427638917}
   - component: {fileID: 1427638918}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2110,7 +2110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689558744}
   - component: {fileID: 1689558745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21108,7 +21108,7 @@ GameObject:
   - component: {fileID: 2108467125}
   - component: {fileID: 2108467124}
   - component: {fileID: 2108467129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

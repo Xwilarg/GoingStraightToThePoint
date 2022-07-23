@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60353856}
   - component: {fileID: 60353857}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504574212}
   - component: {fileID: 504574213}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WallLeft (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30281,7 +30281,7 @@ GameObject:
   - component: {fileID: 2108467125}
   - component: {fileID: 2108467124}
   - component: {fileID: 2108467129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

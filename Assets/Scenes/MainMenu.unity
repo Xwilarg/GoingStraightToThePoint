@@ -733,6 +733,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1790055334}
+    - target: {fileID: 754226223, guid: 9df152065590e05468cf3a2c5068c107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 754226223, guid: 9df152065590e05468cf3a2c5068c107, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TF2Jam.Menu.MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1165172731, guid: 9df152065590e05468cf3a2c5068c107, type: 3}
       propertyPath: m_Interactable
       value: 1
