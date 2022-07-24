@@ -43,7 +43,7 @@ namespace TF2Jam.Player
             _cam = Camera.main;
             if (SceneManager.GetActiveScene().name[0] == '3')
             {
-                _cam.backgroundColor = new Color(176, 91, 150);
+                _cam.backgroundColor = new Color32(212, 149, 192, 255);
             }
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
