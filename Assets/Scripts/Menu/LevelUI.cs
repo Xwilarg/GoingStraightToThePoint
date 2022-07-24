@@ -17,6 +17,15 @@ namespace TF2Jam.Menu
         [SerializeField]
         private TMP_Text _timerText;
 
+        [SerializeField]
+        private GameObject _medalContainer;
+
+        [SerializeField]
+        private Image _medalEasy, _medalHard;
+
+        [SerializeField]
+        private Sprite _silverMedal, _goldMedal;
+
         private void Awake()
         {
             _playEasy.onClick.AddListener(new(() => { SceneManager.LoadScene(_level); }));
@@ -31,6 +40,32 @@ namespace TF2Jam.Menu
             {
                 _playHard.gameObject.SetActive(false);
             }
+
+            (float targetEasy, float targetHard) = MedalManager.Medals[_level];
+            if (data.BestTime < 0f)
+            {
+                _medalEasy.gameObject.SetActive(false);
+            }
+            else if (data.BestTime < targetEasy)
+            {
+                _medalEasy.sprite = _goldMedal;
+            }
+            else if (data.BestTime < targetEasy + MedalManager.GetSilver(targetEasy))
+            {
+                _medalEasy.sprite = _silverMedal;
+            }
+            if (data.BestHardTime < 0f)
+            {
+                _medalHard.gameObject.SetActive(false);
+            }
+            else if (data.BestHardTime < targetHard)
+            {
+                _medalHard.sprite = _goldMedal;
+            }
+            else if (data.BestHardTime < targetHard + MedalManager.GetSilver(targetHard))
+            {
+                _medalHard.sprite = _silverMedal;
+            }
         }
 
         public void EasyEnter()
@@ -40,9 +75,14 @@ namespace TF2Jam.Menu
             {
                 _timerText.text = $"{time:0.00}";
                 _timerText.gameObject.SetActive(true);
+                _medalContainer.SetActive(false);
             }
         }
-        public void EasyExit() { _timerText.gameObject.SetActive(false); }
+        public void EasyExit()
+        {
+            _timerText.gameObject.SetActive(false);
+            _medalContainer.SetActive(true);
+        }
         public void HardEnter()
         {
             var time = PersistencyManager.Instance.GetLevelData(_level).BestHardTime;
@@ -50,8 +90,13 @@ namespace TF2Jam.Menu
             {
                 _timerText.text = $"{time:0.00}";
                 _timerText.gameObject.SetActive(true);
+                _medalContainer.SetActive(false);
             }
         }
-        public void HardExit() { _timerText.gameObject.SetActive(false); }
+        public void HardExit()
+        {
+            _timerText.gameObject.SetActive(false);
+            _medalContainer.SetActive(true);
+        }
     }
 }

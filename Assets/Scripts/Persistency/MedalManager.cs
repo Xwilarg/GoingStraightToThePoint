@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace TF2Jam.Persistency
 {
@@ -17,5 +18,8 @@ namespace TF2Jam.Persistency
             { "3-1", (8f, 11.5f) },
             { "3-2", (11f, 11f) },
         };
+
+        public static int GetSilver(float reference)
+            => Mathf.FloorToInt(reference * 30f / 100f);
     }
 }
