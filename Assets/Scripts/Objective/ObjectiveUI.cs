@@ -110,7 +110,7 @@ namespace TF2Jam.Objective
                     var levelName = SceneManager.GetActiveScene().name;
                     var isHard = levelName.EndsWith('H');
                     var data = PersistencyManager.Instance.GetLevelData(levelName);
-                    if (_timer < (isHard ? data.BestHardTime : data.BestTime))
+                    if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
                     {
                         _newRecord.gameObject.SetActive(true);
                     }
