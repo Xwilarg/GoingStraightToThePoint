@@ -232,17 +232,25 @@ CompositeCollider2D:
   - m_Collider: {fileID: 568061282}
     m_ColliderPaths:
     - - X: 250000000
-        Y: 159999984
+        Y: 149999900
+      - X: 250000041
+        Y: 149999900
+      - X: 250000100
+        Y: 149999959
+      - X: 250000100
+        Y: 160000025
+      - X: 250000041
+        Y: 160000084
+      - X: 239999959
+        Y: 160000084
+      - X: 239999900
+        Y: 160000025
+      - X: 239999900
+        Y: 149999959
+      - X: 239999959
+        Y: 149999900
       - X: 240000000
-        Y: 159999984
-      - X: 240000000
-        Y: 150000000
-      - X: 250000000
-        Y: 150000000
-    - - X: 250000000
-        Y: 149999984
-      - X: 240000000
-        Y: 149999984
+        Y: 149999900
       - X: 240000000
         Y: 130000008
       - X: 250000000
@@ -464,8 +472,8 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 24.999971, y: 5}
-      - {x: 24.999971, y: 15.999999}
-      - {x: 24, y: 15.9999695}
+      - {x: 24.999975, y: 16.000008}
+      - {x: 23.99999, y: 15.999973}
       - {x: 23.999971, y: 6}
       - {x: 18.00001, y: 5.999971}
       - {x: 18.00004, y: 5}
@@ -1317,8 +1325,8 @@ Tilemap:
   - first: {x: 24, y: 15, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1326,14 +1334,14 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 30
+  - m_RefCount: 31
     m_Data: {fileID: 11400000, guid: c611387593277e6459d1c7396a26df95, type: 2}
-  - m_RefCount: 43
+  - m_RefCount: 42
     m_Data: {fileID: 11400000, guid: bd554f69800547440bad622bd1ffa00a, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 30
+  - m_RefCount: 31
     m_Data: {fileID: 21300000, guid: b7ec99493927a934683d3aaee6bc9cf4, type: 3}
-  - m_RefCount: 43
+  - m_RefCount: 42
     m_Data: {fileID: 21300000, guid: d4032dc64438ae54b98c21b20a2b7a6b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 73
