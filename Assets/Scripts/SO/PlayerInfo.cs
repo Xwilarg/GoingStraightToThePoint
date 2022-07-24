@@ -21,6 +21,7 @@ namespace TF2Jam.SO
         [Tooltip("Prefab used when firing a rocket")]
         public GameObject RocketPrefab;
         public GameObject StickyPrefab;
+        public GameObject SentryRocketPrefab;
 
         [Tooltip("Time in seconds between 2 shoots")]
         public float ReloadTime;

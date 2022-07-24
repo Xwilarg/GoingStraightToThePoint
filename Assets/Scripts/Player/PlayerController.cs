@@ -182,7 +182,7 @@ namespace TF2Jam.Player
                 {
                     if (!_hasSentry)
                     {
-                        var go = Instantiate(_info.RocketPrefab, _sentry.transform.position, Quaternion.identity);
+                        var go = Instantiate(_info.SentryRocketPrefab, _sentry.transform.position, Quaternion.identity);
                         Vector3 relPos = screenPos - _sentry.transform.position;
                         float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
                         go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);

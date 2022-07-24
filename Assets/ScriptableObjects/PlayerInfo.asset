@@ -19,6 +19,7 @@ MonoBehaviour:
   FloorDistanceForJump: 1.4
   RocketPrefab: {fileID: 1831645116702727911, guid: 497ea68906fc14e44b50fba455a7f775, type: 3}
   StickyPrefab: {fileID: 1545630663710087410, guid: e24c08324e4123e4eb7e43a5f5b73eda, type: 3}
+  SentryRocketPrefab: {fileID: 1831645116702727911, guid: 5742ce7e022090c46bab8cba167d62c3, type: 3}
   ReloadTime: 0.5
   DemomanAnim: {fileID: 22100000, guid: ab0d7c788d5396144a59592b646e06e3, type: 2}
   SoldierAnim: {fileID: 9100000, guid: 73511decc644c404a88b72abbc123f31, type: 2}
