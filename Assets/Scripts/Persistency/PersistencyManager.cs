@@ -76,11 +76,17 @@ namespace TF2Jam.Persistency
                 var isHard = key.EndsWith('H');
                 if (isHard)
                 {
-                    data.BestHardTime = time;
+                    if (data.BestHardTime < 0f || time < data.BestHardTime)
+                    {
+                        data.BestHardTime = time;
+                    }
                 }
                 else
                 {
-                    data.BestTime = time;
+                    if (data.BestTime < 0f || time < data.BestTime)
+                    {
+                        data.BestTime = time;
+                    }
                     data.IsHardModeUnlocked = true;
                     var world = int.Parse($"{key[0]}");
                     var level = int.Parse($"{key[2]}");

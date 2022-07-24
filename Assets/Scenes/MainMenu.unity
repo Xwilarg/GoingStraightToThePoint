@@ -540,16 +540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544480002}
     m_Modifications:
-    - target: {fileID: 1682221556, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-      propertyPath: _level
-      value: Tutorial2
-      objectReference: {fileID: 0}
-    - target: {fileID: 535924721279129367, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-      propertyPath: m_text
-      value: '{tutorial}
-
-        ({part2})'
-      objectReference: {fileID: 0}
+    - target: {fileID: 1354569060, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1790055334}
     - target: {fileID: 2814948326364006292, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -638,14 +632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialSelector (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3721536168675548421, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1790055334}
-    - target: {fileID: 3721536168675548421, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Tutorial2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
 --- !u!224 &195093329 stripped
@@ -653,23 +639,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2814948326364006292, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
   m_PrefabInstance: {fileID: 195093328}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &195093330 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8707852058766101974, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-  m_PrefabInstance: {fileID: 195093328}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &195093331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195093330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85156c083419c9c4e9eeb9006de29989, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &208395907
 GameObject:
   m_ObjectHideFlags: 0
@@ -5976,6 +5945,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1544480002}
     m_Modifications:
+    - target: {fileID: 1354569060, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1790055334}
+    - target: {fileID: 1354569060, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Tutorial1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682221556, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
+      propertyPath: _level
+      value: Tutorial1
+      objectReference: {fileID: 0}
+    - target: {fileID: 535924721279129367, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
+      propertyPath: m_text
+      value: '{tutorial}'
+      objectReference: {fileID: 0}
     - target: {fileID: 2814948326364006292, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6064,10 +6049,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialSelector
       objectReference: {fileID: 0}
-    - target: {fileID: 3721536168675548421, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1790055334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f20a7f0227bba4994e34825ee0a4b9, type: 3}
 --- !u!224 &2949983030693666635

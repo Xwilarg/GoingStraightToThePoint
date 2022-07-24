@@ -81,8 +81,17 @@ namespace TF2Jam.Player
 
         public void ResetPos()
         {
-            transform.position = ObjectiveUI.Instance.LatestCaptured ?? _spawnPos;
+            var lastCP = ObjectiveUI.Instance.LatestCaptured;
+            if (lastCP == null)
+            {
+                ObjectiveUI.Instance.ResetTimer();
+            }
+            transform.position = lastCP ?? _spawnPos;
             _rb.velocity = Vector2.zero;
+            foreach (var go in GameObject.FindGameObjectsWithTag("Projectile"))
+            {
+                Destroy(go);
+            }
         }
 
         public void AddPropulsionForce(float force, Vector2 direction)

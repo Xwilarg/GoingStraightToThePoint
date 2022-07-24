@@ -1,4 +1,5 @@
 ﻿using TF2Jam.Persistency;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,9 @@ namespace TF2Jam.Menu
 
         [SerializeField]
         private Button _playEasy, _playHard;
+
+        [SerializeField]
+        private TMP_Text _timerText;
 
         private void Awake()
         {
@@ -28,5 +32,26 @@ namespace TF2Jam.Menu
                 _playHard.gameObject.SetActive(false);
             }
         }
+
+        public void EasyEnter()
+        {
+            var time = PersistencyManager.Instance.GetLevelData(_level).BestTime;
+            if (time > 0f)
+            {
+                _timerText.text = $"{time:0.00}";
+                _timerText.gameObject.SetActive(true);
+            }
+        }
+        public void EasyExit() { _timerText.gameObject.SetActive(false); }
+        public void HardEnter()
+        {
+            var time = PersistencyManager.Instance.GetLevelData(_level).BestHardTime;
+            if (time > 0f)
+            {
+                _timerText.text = $"{time:0.00}";
+                _timerText.gameObject.SetActive(true);
+            }
+        }
+        public void HardExit() { _timerText.gameObject.SetActive(false); }
     }
 }
