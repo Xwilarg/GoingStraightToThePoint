@@ -40,6 +40,9 @@ namespace TF2Jam.Objective
         [SerializeField]
         private Image _silverMedal, _goldMedal;
 
+        [SerializeField]
+        private GameObject _newRecord;
+
         private float _timer;
 
         private CPUI[] _controlPoints;
@@ -105,8 +108,13 @@ namespace TF2Jam.Objective
                     _winMenu.GetComponent<VictoryMenu>().Init(_timer);
 
                     var levelName = SceneManager.GetActiveScene().name;
-                    PersistencyManager.Instance.FinishLevel(levelName, _timer);
                     var isHard = levelName.EndsWith('H');
+                    var data = PersistencyManager.Instance.GetLevelData(levelName);
+                    if (_timer < (isHard ? data.BestHardTime : data.BestTime))
+                    {
+                        _newRecord.gameObject.SetActive(true);
+                    }
+                    PersistencyManager.Instance.FinishLevel(levelName, _timer);
                     var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
                     var target = isHard ? tMed.Hard : tMed.Easy;
                     if (_timer < target)
