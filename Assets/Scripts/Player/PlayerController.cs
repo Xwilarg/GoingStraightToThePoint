@@ -1,6 +1,7 @@
 using System.Collections;
 using TF2Jam.Menu;
 using TF2Jam.Objective;
+using TF2Jam.Persistency;
 using TF2Jam.SO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,6 +41,7 @@ namespace TF2Jam.Player
         {
             _rb = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
+            _anim.runtimeAnimatorController = PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.SoldierAnim : _info.DemomanAnim;
             _cam = Camera.main;
             if (SceneManager.GetActiveScene().name[0] == '3')
             {

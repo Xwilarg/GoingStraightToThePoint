@@ -18,3 +18,5 @@ MonoBehaviour:
   FloorDistanceForJump: 1.4
   RocketPrefab: {fileID: 1831645116702727911, guid: 497ea68906fc14e44b50fba455a7f775, type: 3}
   ReloadTime: 0.5
+  DemomanAnim: {fileID: 22100000, guid: ab0d7c788d5396144a59592b646e06e3, type: 2}
+  SoldierAnim: {fileID: 9100000, guid: 73511decc644c404a88b72abbc123f31, type: 2}

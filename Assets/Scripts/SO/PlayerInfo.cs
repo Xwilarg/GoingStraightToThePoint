@@ -22,5 +22,9 @@ namespace TF2Jam.SO
 
         [Tooltip("Time in seconds between 2 shoots")]
         public float ReloadTime;
+
+        [Header("Class info")]
+        public RuntimeAnimatorController DemomanAnim;
+        public RuntimeAnimatorController SoldierAnim;
     }
 }
