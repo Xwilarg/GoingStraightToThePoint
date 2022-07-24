@@ -63,6 +63,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World3/3-2H.unity
     guid: 490adfd62ad6d2445aa0346181e9c07e
   - enabled: 1
+    path: Assets/Scenes/Levels/World3/3-3.unity
+    guid: b55b649cd1bc11a48a04a26debc6d64e
+  - enabled: 1
+    path: Assets/Scenes/Levels/World3/3-3H.unity
+    guid: 44cf3d11542906f4aabc919044687dd3
+  - enabled: 1
     path: Assets/Scenes/UI.unity
     guid: 18c3e3468f4ea7c4cb5ff665cfd6b2b7
   m_configObjects: {}
