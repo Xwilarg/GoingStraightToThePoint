@@ -66,7 +66,7 @@ namespace TF2Jam.Persistency
 
         public void FinishLevel(string key, float time)
         {
-            var data = GetLevelData(key);
+            var data = GetLevelData(key.EndsWith('H') ? key[..^1] : key);
             if (key == "1-3")
             {
                 UnlockLevel("Tutorial2");
