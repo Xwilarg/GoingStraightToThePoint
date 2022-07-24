@@ -106,7 +106,9 @@ namespace TF2Jam.Objective
 
                     var levelName = SceneManager.GetActiveScene().name;
                     PersistencyManager.Instance.FinishLevel(levelName, _timer);
-                    var target = MedalManager.Medals[levelName.EndsWith('H') ? levelName[..^1] : levelName];
+                    var isHard = levelName.EndsWith('H');
+                    var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
+                    var target = isHard ? tMed.Hard : tMed.Easy;
                     if (_timer < target)
                     {
                         _goldMedal.color = Color.white;
