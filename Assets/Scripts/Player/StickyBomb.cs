@@ -33,7 +33,7 @@ namespace TF2Jam.Player
                 _owner.AddPropulsionForce(propForce, (Vector2)_owner.transform.position - contact, contact);
             }
             AudioManager.Instance.PlayClip(_info.ExplosionSound);
-            Instantiate(_info.ExplosionPrefab, contact, Quaternion.identity);
+            Destroy(Instantiate(_info.ExplosionPrefab, contact, Quaternion.identity), 1f);
             Destroy(gameObject);
         }
     }
