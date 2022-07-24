@@ -41,6 +41,10 @@ namespace TF2Jam.Player
             _rb = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
             _cam = Camera.main;
+            if (SceneManager.GetActiveScene().name[0] == '3')
+            {
+                _cam.backgroundColor = new Color(116, 99, 112);
+            }
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
             _jumpIgnoreMask = ~_jumpIgnoreMask;
