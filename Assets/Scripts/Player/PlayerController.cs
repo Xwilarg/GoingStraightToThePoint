@@ -94,9 +94,12 @@ namespace TF2Jam.Player
             }
         }
 
-        public void AddPropulsionForce(float force, Vector2 direction)
+        public void AddPropulsionForce(float force, Vector2 direction, Vector2 contactPoint)
         {
-            _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y));
+            if (contactPoint.y < transform.position.y)
+            {
+                _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y));
+            }
             _rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
 
