@@ -10,6 +10,7 @@ namespace TF2Jam.SO
 
         [Tooltip("Rocket speed")]
         public float RocketSpeed;
+        public float StickySpeed;
 
         [Tooltip("Force applied when jumping")]
         public float JumpForce;
@@ -19,6 +20,7 @@ namespace TF2Jam.SO
 
         [Tooltip("Prefab used when firing a rocket")]
         public GameObject RocketPrefab;
+        public GameObject StickyPrefab;
 
         [Tooltip("Time in seconds between 2 shoots")]
         public float ReloadTime;

@@ -1,7 +1,6 @@
-﻿using TF2Jam.Player;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace TF2Jam
+namespace TF2Jam.Player
 {
     public class Trap : MonoBehaviour
     {

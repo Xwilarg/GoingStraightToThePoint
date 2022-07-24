@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TF2Jam.Menu;
 using TF2Jam.Objective;
 using TF2Jam.Persistency;
@@ -98,6 +99,7 @@ namespace TF2Jam.Player
             {
                 Destroy(go);
             }
+            _bombs.Clear();
         }
 
         public void AddPropulsionForce(float force, Vector2 direction, Vector2 contactPoint)
@@ -143,23 +145,51 @@ namespace TF2Jam.Player
             }
         }
 
+        private readonly List<StickyBomb> _bombs = new();
+
         public void OnAction(InputAction.CallbackContext value)
         {
             if (value.performed && !DidWin && _canShoot)
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-                var go = Instantiate(_info.RocketPrefab, transform.position, Quaternion.identity);
+                var go = Instantiate(PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketPrefab : _info.StickyPrefab, transform.position, Quaternion.identity);
                 Vector3 relPos = screenPos - transform.position;
                 float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
                 go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * _info.RocketSpeed);
-                go.GetComponent<Bullet>().Init(this);
+                go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketSpeed : _info.StickySpeed));
+                if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier) // TODO: Add inheritance or smth
+                {
+                    go.GetComponent<Bullet>().Init(this);
+                }
+                else
+                {
+                    var bomb = go.GetComponent<StickyBomb>();
+                    bomb.Init(this);
+                    _bombs.Add(bomb);
+                    if (_bombs.Count > 2)
+                    {
+                        Destroy(_bombs[0].gameObject);
+                        _bombs.RemoveAt(0);
+                    }
+                }
                 Destroy(go, 10f);
 
                 _canShoot = false;
                 StartCoroutine(Reload());
                 ObjectiveUI.Instance.IsTimerActive = true;
+            }
+        }
+
+        public void OnAction2(InputAction.CallbackContext value)
+        {
+            if (value.performed && !DidWin && _canShoot && PersistencyManager.Instance.CurrentClass == PlayerClass.Demoman)
+            {
+                foreach (var bomb in _bombs)
+                {
+                    bomb.Explodes();
+                }
+                _bombs.Clear();
             }
         }
 

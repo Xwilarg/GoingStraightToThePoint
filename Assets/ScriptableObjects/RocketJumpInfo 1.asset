@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43290b2b9e4a23e45bab65a9a93e4771, type: 3}
-  m_Name: RocketJumpInfo
+  m_Name: RocketJumpInfo 1
   m_EditorClassIdentifier: 
   RocketImpactMaxDistance: 3
   RocketPropulsionForce: 15
