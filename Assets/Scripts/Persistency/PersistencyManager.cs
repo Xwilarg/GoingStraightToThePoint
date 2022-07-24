@@ -26,7 +26,7 @@ namespace TF2Jam.Persistency
             }
         }
 
-        public PlayerClass CurrentClass { set; get; } = PlayerClass.Engineer;
+        public PlayerClass CurrentClass { set; get; } = PlayerClass.Soldier;
 
         private void Load()
         {

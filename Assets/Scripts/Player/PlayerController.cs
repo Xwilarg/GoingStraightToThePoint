@@ -123,6 +123,11 @@ namespace TF2Jam.Player
                 Destroy(go);
             }
             _bombs.Clear();
+            if (!_hasSentry)
+            {
+                _hasSentry = true;
+                Destroy(_sentry.transform.parent.gameObject);
+            }
         }
 
         public void AddPropulsionForce(float force, Vector2 direction, Vector2 contactPoint)
@@ -240,12 +245,14 @@ namespace TF2Jam.Player
                     {
                         if (_hasSentry)
                         {
+                            _sentry = Instantiate(_info.Sentry, info.point + Vector2.up * 2.2f, Quaternion.identity).transform.GetChild(0).gameObject;
+                            _hasSentry = false;
+                            /*
                             var ray = Physics2D.Raycast(info.point + Vector2.down, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
                             if (ray.collider != null && ray.distance < .1f)
                             {
-                                _sentry = Instantiate(_info.Sentry, ray.point + Vector2.up * 2.2f, Quaternion.identity).transform.GetChild(0).gameObject;
-                                _hasSentry = false;
                             }
+                            */
                         }
                         else
                         {
