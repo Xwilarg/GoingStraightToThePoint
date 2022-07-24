@@ -341,30 +341,6 @@ CompositeCollider2D:
         Y: 70000000
       - X: 610000064
         Y: 70000000
-    - - X: 20000000
-        Y: 79999900
-      - X: 20000041
-        Y: 79999900
-      - X: 20000100
-        Y: 79999959
-      - X: 20000100
-        Y: 90000041
-      - X: 20000041
-        Y: 90000100
-      - X: 9999960
-        Y: 90000100
-      - X: 9999901
-        Y: 90000041
-      - X: 9999901
-        Y: 79999959
-      - X: 9999960
-        Y: 79999900
-      - X: 10000001
-        Y: 79999900
-      - X: 10000001
-        Y: 60000000
-      - X: 20000000
-        Y: 60000000
     - - X: 520000132
         Y: 49999959
       - X: 520000132
@@ -529,6 +505,30 @@ CompositeCollider2D:
         Y: 59999900
       - X: 370000041
         Y: 59999900
+    - - X: 20000000
+        Y: 69999900
+      - X: 20000041
+        Y: 69999900
+      - X: 20000100
+        Y: 69999959
+      - X: 20000100
+        Y: 79999959
+      - X: 20000041
+        Y: 79999900
+      - X: 9999960
+        Y: 79999900
+      - X: 9999901
+        Y: 79999959
+      - X: 9999901
+        Y: 69999959
+      - X: 9999960
+        Y: 69999900
+      - X: 10000001
+        Y: 69999900
+      - X: 10000001
+        Y: 60000000
+      - X: 20000000
+        Y: 60000000
     - - X: 500000032
         Y: 60000000
       - X: 500000032
@@ -605,10 +605,6 @@ CompositeCollider2D:
       - {x: 64.99998, y: 14}
       - {x: 64, y: 13.999971}
       - {x: 64.00003, y: 13.00001}
-    - - {x: 1.9999708, y: 6}
-      - {x: 1.9999748, y: 9.00001}
-      - {x: 0.9999901, y: 8.999974}
-      - {x: 1.0000294, y: 6}
     - - {x: 51.999992, y: 6.000019}
       - {x: 54.00002, y: 6.0000253}
       - {x: 53.999973, y: 8}
@@ -629,16 +625,20 @@ CompositeCollider2D:
       - {x: 13.999971, y: 8}
       - {x: 6, y: 7.9999704}
       - {x: 6.000029, y: 2}
+    - - {x: 24.99996, y: 7}
+      - {x: 24.99996, y: 8}
+      - {x: 23, y: 7.9999704}
+      - {x: 23.000029, y: 7}
     - - {x: 36.999973, y: 5.99999}
       - {x: 36.99996, y: 8}
       - {x: 35, y: 7.9999704}
       - {x: 35.00003, y: 7}
       - {x: 35.999992, y: 6.9999704}
       - {x: 36.000027, y: 5.99999}
-    - - {x: 24.99996, y: 7}
-      - {x: 24.99996, y: 8}
-      - {x: 23, y: 7.9999704}
-      - {x: 23.000029, y: 7}
+    - - {x: 1.9999708, y: 6}
+      - {x: 1.9999748, y: 7.9999905}
+      - {x: 0.9999901, y: 7.9999666}
+      - {x: 1.0000294, y: 6}
     - - {x: 9.99999, y: 5.000019}
       - {x: 12.00001, y: 5.0000253}
       - {x: 11.99998, y: 6.00001}
@@ -1153,8 +1153,8 @@ Tilemap:
   - first: {x: 1, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1345,16 +1345,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 4
       m_TileSpriteIndex: 4
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 1, y: 8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1650,7 +1640,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: f1850aec5fdf6374bb2f0c00c0205766, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 49
+  - m_RefCount: 48
     m_Data: {fileID: 11400000, guid: 83b453beec59f384bae7516f8d43752d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -1661,10 +1651,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 8bd929d9991bd784c8fafa831e873463, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 49
+  - m_RefCount: 48
     m_Data: {fileID: 21300000, guid: 8b815c1d18063ff4e8b34c8d62b90c04, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 88
+  - m_RefCount: 87
     m_Data:
       e00: 1
       e01: 0
@@ -1683,7 +1673,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 88
+  - m_RefCount: 87
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
