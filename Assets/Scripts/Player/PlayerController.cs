@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TF2Jam.Audio;
 using TF2Jam.Menu;
 using TF2Jam.Objective;
 using TF2Jam.Persistency;
@@ -174,6 +175,7 @@ namespace TF2Jam.Player
                     }
                 }
                 Destroy(go, 10f);
+                AudioManager.Instance.PlayClip(_info._shootAudio);
 
                 _canShoot = false;
                 StartCoroutine(Reload());
