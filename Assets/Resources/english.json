@@ -16,6 +16,9 @@
     "victory": "Victory",
     "newRecord": "New Record",
 
+    "silverAt": "Silver at {0}",
+    "goldAt": "Gold at {0}",
+
     "language": "Language",
     "deleteData": "Delete all data",
     "finalWarning": "Are you sure?\nThis cannot be undone",

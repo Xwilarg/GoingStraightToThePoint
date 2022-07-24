@@ -3,6 +3,7 @@ using TF2Jam.Audio;
 using TF2Jam.Menu;
 using TF2Jam.Persistency;
 using TF2Jam.Player;
+using TF2Jam.Translation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,6 +47,9 @@ namespace TF2Jam.Objective
 
         [SerializeField]
         private AudioClip _captureSound;
+
+        [SerializeField]
+        private TMP_Text _nextMedalInfo;
 
         private float _timer;
 
@@ -130,6 +134,11 @@ namespace TF2Jam.Objective
                     else if (_timer < target + MedalManager.GetSilver(target))
                     {
                         _silverMedal.color = Color.white;
+                        _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                    }
+                    else
+                    {
+                        _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
                     }
                 }
                 return true;

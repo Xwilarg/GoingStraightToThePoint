@@ -16,6 +16,9 @@
     "victory": "Victoire",
     "newRecord": "Nouveau record",
 
+    "silverAt": "Argent a {0}",
+    "goldAt": "Or a {0}",
+
     "language": "Langue",
     "deleteData": "Supprimer toutes les donnees",
     "finalWarning": "Etes vous sure?\nCela ne peux pas etre annule",
