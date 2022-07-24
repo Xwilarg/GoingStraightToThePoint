@@ -58,6 +58,12 @@ namespace TF2Jam.Persistency
             }
         }
 
+        public void ResetAll()
+        {
+            _saveData = new();
+            Save();
+        }
+
         public void FinishLevel(string key, float time)
         {
             var data = GetLevelData(key);
