@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TF2Jam.Persistency;
+using UnityEngine;
 
 namespace TF2Jam.Audio
 {
@@ -16,7 +17,10 @@ namespace TF2Jam.Audio
 
         public void PlayClip(AudioClip clip)
         {
-            _source.PlayOneShot(clip);
+            if (PersistencyManager.Instance.IsSoundsActive)
+            {
+                _source.PlayOneShot(clip);
+            }
         }
     }
 }
