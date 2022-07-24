@@ -613,6 +613,7 @@ MonoBehaviour:
   _newRecord: {fileID: 790925186}
   _captureSound: {fileID: 8300000, guid: 20e033d87e0d0c04b82aa4540e8794ce, type: 3}
   _nextMedalInfo: {fileID: 1666873903}
+  _medalContainer: {fileID: 1526859497}
 --- !u!114 &390035395
 MonoBehaviour:
   m_ObjectHideFlags: 0

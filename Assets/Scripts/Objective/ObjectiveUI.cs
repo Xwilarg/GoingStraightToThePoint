@@ -51,6 +51,9 @@ namespace TF2Jam.Objective
         [SerializeField]
         private TMP_Text _nextMedalInfo;
 
+        [SerializeField]
+        private GameObject _medalContainer;
+
         private float _timer;
 
         private CPUI[] _controlPoints;
@@ -116,29 +119,36 @@ namespace TF2Jam.Objective
                     _winMenu.SetActive(true);
                     _winMenu.GetComponent<VictoryMenu>().Init(_timer);
 
-                    var levelName = SceneManager.GetActiveScene().name;
-                    var isHard = levelName.EndsWith('H');
-                    var data = PersistencyManager.Instance.GetLevelData(isHard ? levelName[..^1] : levelName);
-                    if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
+                    if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier)
                     {
-                        _newRecord.gameObject.SetActive(true);
-                    }
-                    PersistencyManager.Instance.FinishLevel(levelName, _timer);
-                    var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
-                    var target = isHard ? tMed.Hard : tMed.Easy;
-                    if (_timer < target)
-                    {
-                        _goldMedal.color = Color.white;
-                        _silverMedal.color = Color.white;
-                    }
-                    else if (_timer < target + MedalManager.GetSilver(target))
-                    {
-                        _silverMedal.color = Color.white;
-                        _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                        var levelName = SceneManager.GetActiveScene().name;
+                        var isHard = levelName.EndsWith('H');
+                        var data = PersistencyManager.Instance.GetLevelData(isHard ? levelName[..^1] : levelName);
+                        if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
+                        {
+                            _newRecord.gameObject.SetActive(true);
+                        }
+                        PersistencyManager.Instance.FinishLevel(levelName, _timer);
+                        var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
+                        var target = isHard ? tMed.Hard : tMed.Easy;
+                        if (_timer < target)
+                        {
+                            _goldMedal.color = Color.white;
+                            _silverMedal.color = Color.white;
+                        }
+                        else if (_timer < target + MedalManager.GetSilver(target))
+                        {
+                            _silverMedal.color = Color.white;
+                            _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                        }
+                        else
+                        {
+                            _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
+                        }
                     }
                     else
                     {
-                        _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
+                        _medalContainer.SetActive(false);
                     }
                 }
                 return true;
