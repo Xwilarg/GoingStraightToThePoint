@@ -31,5 +31,7 @@ namespace TF2Jam.SO
         public RuntimeAnimatorController EngineerAnim;
 
         public AudioClip _shootAudio;
+
+        public GameObject Sentry;
     }
 }

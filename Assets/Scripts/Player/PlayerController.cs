@@ -87,6 +87,17 @@ namespace TF2Jam.Player
                     }
                     _anim.SetBool("IsWalking", false);
                 }
+
+                if (!_hasSentry)
+                {
+                    var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                    var posX = Mathf.Abs(_sentry.transform.localScale.x);
+                    _sentry.transform.localScale =
+                        new Vector3(
+                            posX * (screenPos.x < _sentry.transform.position.x ? -1f : 1f),
+                            _sentry.transform.localScale.y,
+                            _sentry.transform.localScale.z);
+                }
             }
             else
             {
@@ -158,6 +169,8 @@ namespace TF2Jam.Player
         }
 
         private readonly List<StickyBomb> _bombs = new();
+        private bool _hasSentry = true;
+        private GameObject _sentry;
 
         public void OnAction(InputAction.CallbackContext value)
         {
@@ -165,44 +178,93 @@ namespace TF2Jam.Player
             {
                 var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-                var go = Instantiate(PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketPrefab : _info.StickyPrefab, transform.position, Quaternion.identity);
-                Vector3 relPos = screenPos - transform.position;
-                float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
-                go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketSpeed : _info.StickySpeed));
-                if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier) // TODO: Add inheritance or smth
+                if (PersistencyManager.Instance.CurrentClass == PlayerClass.Engineer)
                 {
-                    go.GetComponent<Bullet>().Init(this);
+                    if (!_hasSentry)
+                    {
+                        var go = Instantiate(_info.RocketPrefab, _sentry.transform.position, Quaternion.identity);
+                        Vector3 relPos = screenPos - _sentry.transform.position;
+                        float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
+                        go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                        go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketSpeed : _info.StickySpeed));
+                        go.GetComponent<Bullet>().Init(this);
+
+                        Destroy(go, 10f);
+                        AudioManager.Instance.PlayClip(_info._shootAudio);
+
+                        _canShoot = false;
+                        StartCoroutine(Reload());
+                    }
                 }
                 else
                 {
-                    var bomb = go.GetComponent<StickyBomb>();
-                    bomb.Init(this);
-                    _bombs.Add(bomb);
-                    if (_bombs.Count > 2)
+                    var go = Instantiate(PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketPrefab : _info.StickyPrefab, transform.position, Quaternion.identity);
+                    Vector3 relPos = screenPos - transform.position;
+                    float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
+                    go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketSpeed : _info.StickySpeed));
+                    if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier) // TODO: Add inheritance or smth
                     {
-                        Destroy(_bombs[0].gameObject);
-                        _bombs.RemoveAt(0);
+                        go.GetComponent<Bullet>().Init(this);
                     }
-                }
-                Destroy(go, 10f);
-                AudioManager.Instance.PlayClip(_info._shootAudio);
+                    else
+                    {
+                        var bomb = go.GetComponent<StickyBomb>();
+                        bomb.Init(this);
+                        _bombs.Add(bomb);
+                        if (_bombs.Count > 2)
+                        {
+                            Destroy(_bombs[0].gameObject);
+                            _bombs.RemoveAt(0);
+                        }
+                    }
+                    Destroy(go, 10f);
+                    AudioManager.Instance.PlayClip(_info._shootAudio);
 
-                _canShoot = false;
-                StartCoroutine(Reload());
+                    _canShoot = false;
+                    StartCoroutine(Reload());
+                }
                 ObjectiveUI.Instance.IsTimerActive = true;
             }
         }
 
         public void OnAction2(InputAction.CallbackContext value)
         {
-            if (value.performed && !DidWin && _canShoot && PersistencyManager.Instance.CurrentClass == PlayerClass.Demoman)
+            if (value.performed && !DidWin && _canShoot)
             {
-                foreach (var bomb in _bombs)
+                if (PersistencyManager.Instance.CurrentClass == PlayerClass.Engineer)
                 {
-                    bomb.Explodes();
+                    var screenPos = _cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                    var info = Physics2D.Raycast(transform.position, screenPos - transform.position, float.PositiveInfinity, _jumpIgnoreMask);
+                    if (info.collider != null)
+                    {
+                        if (_hasSentry)
+                        {
+                            var ray = Physics2D.Raycast(info.point + Vector2.down, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
+                            if (ray.collider != null && ray.distance < .1f)
+                            {
+                                _sentry = Instantiate(_info.Sentry, ray.point + Vector2.up * 1.2f, Quaternion.identity).transform.GetChild(0).gameObject;
+                                _hasSentry = false;
+                            }
+                        }
+                        else
+                        {
+                            if (info.collider.CompareTag("Sentry"))
+                            {
+                                _hasSentry = true;
+                                Destroy(info.collider.gameObject);
+                            }
+                        }
+                    }
                 }
-                _bombs.Clear();
+                else if (PersistencyManager.Instance.CurrentClass == PlayerClass.Demoman)
+                {
+                    foreach (var bomb in _bombs)
+                    {
+                        bomb.Explodes();
+                    }
+                    _bombs.Clear();
+                }
             }
         }
 

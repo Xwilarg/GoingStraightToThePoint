@@ -24,3 +24,4 @@ MonoBehaviour:
   SoldierAnim: {fileID: 9100000, guid: 73511decc644c404a88b72abbc123f31, type: 2}
   EngineerAnim: {fileID: 22100000, guid: 62e6f38a01b33f749886c02c728e7551, type: 2}
   _shootAudio: {fileID: 8300000, guid: e0abdcc2ca4c8464793f2c17401914d5, type: 3}
+  Sentry: {fileID: 2527952859013625121, guid: 3417912df57e6d84e998c5de6d0a4c9a, type: 3}
