@@ -39,11 +39,22 @@ namespace TF2Jam.Player
 
         private bool _canShoot = true;
 
+        private RuntimeAnimatorController GetAnimator()
+        {
+            return PersistencyManager.Instance.CurrentClass switch
+            {
+                PlayerClass.Soldier => _info.SoldierAnim,
+                PlayerClass.Demoman => _info.DemomanAnim,
+                PlayerClass.Engineer => _info.EngineerAnim,
+                _ => null
+            };
+        }
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
-            _anim.runtimeAnimatorController = PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.SoldierAnim : _info.DemomanAnim;
+            _anim.runtimeAnimatorController = GetAnimator();
             _cam = Camera.main;
             if (SceneManager.GetActiveScene().name[0] == '3')
             {

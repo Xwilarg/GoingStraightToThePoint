@@ -3,6 +3,7 @@
     public enum PlayerClass
     {
         Soldier,
-        Demoman
+        Demoman,
+        Engineer
     }
 }
