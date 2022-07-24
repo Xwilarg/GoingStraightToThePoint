@@ -1,1 +1,40 @@
-{}
+{
+    "resume": "Continuer",
+    "restart": "Reessayer",
+    "menu": "Retour au menu",
+
+    "yes": "Oui",
+    "no": "Non",
+
+    "tutorial": "Tutoriel",
+    "part2": "Partie 2",
+    "options": "Options",
+
+    "easy": "Facile",
+    "hard": "Difficile",
+
+    "victory": "Victoire",
+
+    "language": "Langue",
+    "deleteData": "Supprimer toutes les donnees",
+    "finalWarning": "Etes vous sure?\nCela ne peux pas etre annule",
+
+    "credits": "Fait par Xwilarg pour la TF2Maps 72-Hour Summer Jam",
+
+    "tutorial1-1": "Comment rocket jump facilement:",
+    "tutorial1-2": "Utilisez le bouton gauche de la souris pour tirer en dessous de vous !",
+
+    "tutorial2-1": "Besoin d'aller plus haut ?",
+    "tutorial2-2": "Essayez de sauter avant de tirer !",
+    "tutorial2-3": "Entrainez vous a trouver un bon angle et franchissez cette falaise !",
+
+    "tutorial3-1": "Capturez tous les points de controle pour gagner !",
+
+    "tutorial4-1": "Vous perdez trop de vitesse en atterissant ?",
+    "tutorial4-2": "Pendant que vous faites un rocketjump, tirez vers le sol et essayez de faires en sorte qu'elle explose juste avant que vous touchez le sol",
+
+    "tutorial5-1": "Vous pouvez utiliser les methodes que vous avez appris avant pour faire des sauts murales",
+
+    "tutorial6-1": "Un mur trop haut ? Propulsez vous vers le haut",
+    "tutorial6-2": "Et pendant que vous etes dans les airs, tirez vers le bas pour qu'elle explose juste avant que vous touchez le sol, vous donnant plus de velocite verticale"
+}

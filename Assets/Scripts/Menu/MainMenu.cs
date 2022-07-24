@@ -1,13 +1,28 @@
-﻿using UnityEngine;
+﻿using TF2Jam.Translation;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TF2Jam.Menu
 {
     public class MainMenu : MonoBehaviour
     {
-        public void StartLevel(string level)
+        public void SetFrench() => SetLanguage("french");
+
+        public void SetEnglish() => SetLanguage("english");
+
+        private void SetLanguage(string key)
         {
-            SceneManager.LoadScene(level);
+            Translate.Instance.CurrentLanguage = key;
+        }
+
+        public void DeleteAllSaves()
+        {
+
+        }
+
+        public void StartLevel(string key)
+        {
+            SceneManager.LoadScene(key);
         }
     }
 }

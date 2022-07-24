@@ -1066,9 +1066,9 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1479,6 +1479,7 @@ GameObject:
   - component: {fileID: 870354826}
   - component: {fileID: 870354828}
   - component: {fileID: 870354827}
+  - component: {fileID: 870354829}
   m_Layer: 5
   m_Name: VictoryText
   m_TagString: Untagged
@@ -1526,7 +1527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Victory
+  m_text: '{victory}'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 585d0c5446fc71f4198dda7d282ecbd3, type: 2}
   m_sharedMaterial: {fileID: -779623318763667277, guid: 585d0c5446fc71f4198dda7d282ecbd3, type: 2}
@@ -1603,6 +1604,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870354825}
   m_CullTransparentMesh: 1
+--- !u!114 &870354829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870354825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85156c083419c9c4e9eeb9006de29989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &876802289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,9 +1811,9 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 15
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
