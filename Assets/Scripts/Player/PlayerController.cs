@@ -243,7 +243,7 @@ namespace TF2Jam.Player
                             var ray = Physics2D.Raycast(info.point + Vector2.down, Vector2.down, float.PositiveInfinity, _jumpIgnoreMask);
                             if (ray.collider != null && ray.distance < .1f)
                             {
-                                _sentry = Instantiate(_info.Sentry, ray.point + Vector2.up * 1.2f, Quaternion.identity).transform.GetChild(0).gameObject;
+                                _sentry = Instantiate(_info.Sentry, ray.point + Vector2.up * 2.2f, Quaternion.identity).transform.GetChild(0).gameObject;
                                 _hasSentry = false;
                             }
                         }

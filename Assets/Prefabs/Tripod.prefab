@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7895252202683142063}
   - component: {fileID: 2499477980199882035}
   - component: {fileID: 889851778116740265}
-  - component: {fileID: 2245118255411342914}
+  - component: {fileID: -7275104889573987667}
   m_Layer: 10
   m_Name: Tripod
   m_TagString: Sentry
@@ -197,7 +197,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16857731, y: 0.24}
   m_EdgeRadius: 0
---- !u!50 &2245118255411342914
+--- !u!50 &-7275104889573987667
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
