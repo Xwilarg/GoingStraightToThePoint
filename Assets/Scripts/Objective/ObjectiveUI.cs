@@ -112,7 +112,7 @@ namespace TF2Jam.Objective
                         _goldMedal.color = Color.white;
                         _silverMedal.color = Color.white;
                     }
-                    else if (_timer < target + 3)
+                    else if (_timer < target + Mathf.FloorToInt(_timer * 30f / 100f))
                     {
                         _silverMedal.color = Color.white;
                     }
