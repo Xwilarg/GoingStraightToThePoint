@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using System.Text;
+using TF2Jam.Player;
 using UnityEngine;
 
 namespace TF2Jam.Persistency
@@ -24,6 +25,8 @@ namespace TF2Jam.Persistency
                 return _instance;
             }
         }
+
+        public PlayerClass CurrentClass { set; get; } = PlayerClass.Soldier;
 
         private void Load()
         {
