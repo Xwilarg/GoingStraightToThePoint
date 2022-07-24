@@ -37,6 +37,9 @@ namespace TF2Jam.Objective
         [SerializeField]
         private GameObject _winMenu;
 
+        [SerializeField]
+        private Image _silverMedal, _goldMedal;
+
         private float _timer;
 
         private CPUI[] _controlPoints;
@@ -101,7 +104,18 @@ namespace TF2Jam.Objective
                     _winMenu.SetActive(true);
                     _winMenu.GetComponent<VictoryMenu>().Init(_timer);
 
-                    PersistencyManager.Instance.FinishLevel(SceneManager.GetActiveScene().name, _timer);
+                    var levelName = SceneManager.GetActiveScene().name;
+                    PersistencyManager.Instance.FinishLevel(levelName, _timer);
+                    var target = MedalManager.Medals[levelName.EndsWith('H') ? levelName[..^1] : levelName];
+                    if (_timer < target)
+                    {
+                        _goldMedal.color = Color.white;
+                        _silverMedal.color = Color.white;
+                    }
+                    else if (_timer < target + 3)
+                    {
+                        _silverMedal.color = Color.white;
+                    }
                 }
                 return true;
             }

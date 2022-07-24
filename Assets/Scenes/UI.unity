@@ -606,6 +606,8 @@ MonoBehaviour:
   _sprCaptured: {fileID: 21300000, guid: 1347612f30b16b54cbed372c3a100b2b, type: 3}
   _timerDisplay: {fileID: 2043602754}
   _winMenu: {fileID: 876802289}
+  _silverMedal: {fileID: 1909660035}
+  _goldMedal: {fileID: 508479626}
 --- !u!114 &390035395
 MonoBehaviour:
   m_ObjectHideFlags: 0
