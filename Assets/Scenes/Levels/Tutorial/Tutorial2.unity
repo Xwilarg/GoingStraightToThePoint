@@ -424,7 +424,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '{tutorial5-1}'
+  m_text: '{tutorial5-1}
+
+    {tutorial5-2}'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 585d0c5446fc71f4198dda7d282ecbd3, type: 2}
   m_sharedMaterial: {fileID: -779623318763667277, guid: 585d0c5446fc71f4198dda7d282ecbd3, type: 2}
