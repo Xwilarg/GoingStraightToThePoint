@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TF2Jam.Audio;
 using TF2Jam.Menu;
 using TF2Jam.Persistency;
 using TF2Jam.Player;
@@ -42,6 +43,9 @@ namespace TF2Jam.Objective
 
         [SerializeField]
         private GameObject _newRecord;
+
+        [SerializeField]
+        private AudioClip _captureSound;
 
         private float _timer;
 
@@ -92,6 +96,7 @@ namespace TF2Jam.Objective
             {
                 _controlPoints[_index].UI.sprite = _sprCaptured;
                 _index++;
+                AudioManager.Instance.PlayClip(_captureSound);
                 if (_index < _controlPoints.Length)
                 {
                     _controlPoints[_index].UI.sprite = _sprUnlocked;

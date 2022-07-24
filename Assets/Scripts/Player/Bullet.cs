@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TF2Jam.Audio;
 using TF2Jam.SO;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace TF2Jam.Player
                 var propForce = (1f - force / _info.RocketImpactMaxDistance) * _info.RocketPropulsionForce;
                 _owner.AddPropulsionForce(propForce, (Vector2)_owner.transform.position - contact);
             }
+            AudioManager.Instance.PlayClip(_info.ExplosionSound);
             Instantiate(_info.ExplosionPrefab, contact, Quaternion.identity);
             Destroy(gameObject);
         }

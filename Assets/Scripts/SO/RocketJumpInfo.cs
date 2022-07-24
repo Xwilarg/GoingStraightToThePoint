@@ -9,5 +9,7 @@ namespace TF2Jam.SO
         public float RocketPropulsionForce;
 
         public GameObject ExplosionPrefab;
+
+        public AudioClip ExplosionSound;
     }
 }

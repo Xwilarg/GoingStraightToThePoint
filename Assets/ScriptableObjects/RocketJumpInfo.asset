@@ -15,3 +15,4 @@ MonoBehaviour:
   RocketImpactMaxDistance: 3
   RocketPropulsionForce: 15
   ExplosionPrefab: {fileID: 4561363955397973443, guid: 1bed4f4429d9bef4c9a3637d3db6b997, type: 3}
+  ExplosionSound: {fileID: 8300000, guid: 45360da5a07b00b42b17bc5b09b8adb3, type: 3}
