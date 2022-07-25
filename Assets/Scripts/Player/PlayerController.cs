@@ -61,6 +61,10 @@ namespace TF2Jam.Player
             {
                 _cam.backgroundColor = new Color32(212, 149, 192, 255);
             }
+            else if (SceneManager.GetActiveScene().name == "4-2")
+            {
+                _cam.transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+            }
             _jumpIgnoreMask = (1 << LayerMask.NameToLayer("Player"));
             _jumpIgnoreMask |= (1 << LayerMask.NameToLayer("Projectile"));
             _jumpIgnoreMask = ~_jumpIgnoreMask;

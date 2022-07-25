@@ -19,6 +19,8 @@ namespace TF2Jam.Persistency
             { "3-2", (10.5f, 10.5f) },
             { "3-3", (15f, 15f) },
             { "4-1", (-1f, -1f) },
+            { "4-2", (-1f, -1f) },
+            { "4-3", (-1f, -1f) },
         };
 
         public static int GetSilver(float reference)
