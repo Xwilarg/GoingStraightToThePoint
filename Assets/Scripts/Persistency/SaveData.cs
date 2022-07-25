@@ -19,6 +19,7 @@ namespace TF2Jam.Persistency
                 }
             }
         };
+        public bool DidUnlockDemoman = false;
     }
 
     public class LevelData

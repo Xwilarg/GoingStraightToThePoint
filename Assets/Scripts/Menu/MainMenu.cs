@@ -31,6 +31,9 @@ namespace TF2Jam.Menu
         [SerializeField]
         private TMP_Text _helpText;
 
+        [SerializeField]
+        private GameObject _demomanInfo;
+
         private void Awake()
         {
             if (!PersistencyManager.Instance.GetLevelData("3-3").IsHardModeUnlocked)
@@ -39,6 +42,11 @@ namespace TF2Jam.Menu
             }
             else
             {
+                if (!PersistencyManager.Instance.ShouldDisplayDemoman)
+                {
+                    PersistencyManager.Instance.DisplayDemomanMsg();
+                    _demomanInfo.SetActive(true);
+                }
                 UpdateClassDisplay();
             }
             UpdateSoundsDisplay();

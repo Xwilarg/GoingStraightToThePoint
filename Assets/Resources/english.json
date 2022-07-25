@@ -31,6 +31,7 @@
     "helpDemoman": "Left mouse to shoot sticky bombs, right mouse to make them explodes",
     "helpEngineer": "Right mouse to deploy your sentry, aim at it and press right mouse again to takes it back\nLeft mouse to fire with it once deployed",
     "helpIceFairy": "Left mouse to shoot, rocket explodes upon collision with player",
+    "helpDemomanTitle": "Demoman Unlocked",
 
     "language": "Language",
     "audio": "Audio",

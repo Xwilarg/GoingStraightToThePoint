@@ -116,6 +116,14 @@ namespace TF2Jam.Persistency
 
         public bool AllowAdditionalClasses { set; get; }
 
+        public void DisplayDemomanMsg()
+        {
+            _saveData.DidUnlockDemoman = true;
+            Save();
+        }
+
+        public bool ShouldDisplayDemoman => _saveData.DidUnlockDemoman;
+
         private SaveData _saveData;
         private string _path;
     }
