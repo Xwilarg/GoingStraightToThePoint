@@ -22,6 +22,7 @@ namespace TF2Jam.SO
         public GameObject RocketPrefab;
         public GameObject StickyPrefab;
         public GameObject SentryRocketPrefab;
+        public GameObject IceRocketPrefab;
 
         [Tooltip("Time in seconds between 2 shoots")]
         public float ReloadTime;

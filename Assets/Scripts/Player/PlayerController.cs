@@ -203,7 +203,12 @@ namespace TF2Jam.Player
                 }
                 else
                 {
-                    var go = Instantiate(PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketPrefab : _info.StickyPrefab, transform.position, Quaternion.identity);
+                    var go = Instantiate(PersistencyManager.Instance.CurrentClass switch
+                    {
+                        PlayerClass.Soldier => _info.RocketPrefab,
+                        PlayerClass.Demoman => _info.StickyPrefab,
+                        PlayerClass.IceFairy => _info.IceRocketPrefab
+                    }, transform.position, Quaternion.identity);
                     Vector3 relPos = screenPos - transform.position;
                     float angle = Mathf.Atan2(relPos.y, relPos.x) * Mathf.Rad2Deg;
                     go.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -211,6 +216,10 @@ namespace TF2Jam.Player
                     if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier) // TODO: Add inheritance or smth
                     {
                         go.GetComponent<Bullet>().Init(this);
+                    }
+                    else if (PersistencyManager.Instance.CurrentClass == PlayerClass.IceFairy)
+                    {
+
                     }
                     else
                     {

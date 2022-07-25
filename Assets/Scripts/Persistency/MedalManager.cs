@@ -8,7 +8,7 @@ namespace TF2Jam.Persistency
         public static Dictionary<string, (float Easy, float Hard)> Medals = new()
         {
             { "Tutorial1", (12f, 12f) },
-            { "Tutorial2", (17f, 17f) },
+            { "Tutorial2", (15f, 15f) },
             { "1-1", (4.5f, 5f) },
             { "1-2", (4.5f, 4.5f) },
             { "1-3", (2.5f, 2.5f) },

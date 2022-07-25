@@ -22,12 +22,15 @@
     "silverAt": "Argent a {0}",
     "goldAt": "Or a {0}",
 
+    "iceFairy": "Fee de glace",
+
     "language": "Langue",
     "audio": "Audio",
     "dangerZone": "Zone Dangereuse",
     "expClasses": "Debloquer les classes experimentales",
     "deleteData": "Supprimer toutes les donnees",
     "finalWarning": "Etes vous sure?\nCela ne peux pas etre annule",
+    "warningClass": "Etes vous sure?\nCes classes containent soient des bugs ont sont juste des blagues, n'oubliez pas que vous pouvez redemarrer un niveau avec R",
 
     "credits": "Fait par Xwilarg pour la TF2Maps 72-Hour Summer Jam",
 

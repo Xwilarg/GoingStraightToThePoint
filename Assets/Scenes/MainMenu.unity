@@ -8029,6 +8029,7 @@ MonoBehaviour:
   _emblemSoldier: {fileID: 21300000, guid: a7a38c3c2794fad45a97d5a81f13dee2, type: 3}
   _emblemDemoman: {fileID: 21300000, guid: 27950360387601749a6171035836b502, type: 3}
   _emblemEngineer: {fileID: 21300000, guid: 2199066e8b87510449f32ed01202d82f, type: 3}
+  _emblemFairy: {fileID: 21300000, guid: 69480573b12a1314183aa72edea9be5c, type: 3}
   _currentClassText: {fileID: 1376380420}
   _bgmX: {fileID: 1751388766}
   _soundsX: {fileID: 1694202251}

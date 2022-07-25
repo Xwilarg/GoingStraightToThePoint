@@ -17,7 +17,7 @@ namespace TF2Jam.Menu
         private Image _emblemDisplay;
 
         [SerializeField]
-        private Sprite _emblemSoldier, _emblemDemoman, _emblemEngineer;
+        private Sprite _emblemSoldier, _emblemDemoman, _emblemEngineer, _emblemFairy;
 
         [SerializeField]
         private TMP_Text _currentClassText;
@@ -63,6 +63,11 @@ namespace TF2Jam.Menu
                 _emblemDisplay.sprite = _emblemEngineer;
                 _currentClassText.text = "Engineer";
             }
+            else if (PersistencyManager.Instance.CurrentClass == PlayerClass.IceFairy)
+            {
+                _emblemDisplay.sprite = _emblemFairy;
+                _currentClassText.text = Translate.Instance.Tr("iceFairy");
+            }
         }
 
         private void UpdateSoundsDisplay()
@@ -78,7 +83,8 @@ namespace TF2Jam.Menu
             {
                 PlayerClass.Soldier => PersistencyManager.Instance.GetLevelData("3-3").IsHardModeUnlocked ? PlayerClass.Demoman : PlayerClass.Engineer,
                 PlayerClass.Demoman => PersistencyManager.Instance.AllowAdditionalClasses ? PlayerClass.Engineer : PlayerClass.Soldier,
-                PlayerClass.Engineer => PlayerClass.Soldier
+                PlayerClass.Engineer => PlayerClass.IceFairy,
+                PlayerClass.IceFairy => PlayerClass.Soldier
             };
             UpdateClassDisplay();
         }

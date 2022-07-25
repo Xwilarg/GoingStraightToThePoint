@@ -22,13 +22,15 @@
     "silverAt": "Silver at {0}",
     "goldAt": "Gold at {0}",
 
+    "iceFairy": "Ice Fairy",
+
     "language": "Language",
     "audio": "Audio",
     "dangerZone": "Danger Zone",
     "deleteData": "Delete all data",
     "expClasses": "Unlock experimentals classes",
     "finalWarning": "Are you sure?\nThis cannot be undone",
-    "warningClass": "Are you sure?\nExperimental classes will contains bugs, don't forget that you can restart a level with R",
+    "warningClass": "Are you sure?\nThese classes eithers contains bugs or are straight up jokes, don't forget that you can restart a level with R",
 
     "credits": "Made by Xwilarg for the TF2Maps 72-Hour Summer Jam",
 

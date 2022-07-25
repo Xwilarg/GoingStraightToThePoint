@@ -4,6 +4,7 @@
     {
         Soldier,
         Demoman,
-        Engineer
+        Engineer,
+        IceFairy
     }
 }
