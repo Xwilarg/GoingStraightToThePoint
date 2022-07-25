@@ -84,7 +84,15 @@ namespace TF2Jam.Player
                         ObjectiveUI.Instance.TriggerGameEnd();
                     }
                     _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
-                    _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
+                    if (_rb.velocity.x != 0f)
+                    {
+                        _anim.SetBool("IsWalking", true);
+                        ObjectiveUI.Instance.IsTimerActive = true;
+                    }
+                    else
+                    {
+                        _anim.SetBool("IsWalking", false);
+                    }
                 }
                 else
                 {
