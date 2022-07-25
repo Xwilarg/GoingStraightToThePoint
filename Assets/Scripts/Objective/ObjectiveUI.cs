@@ -89,13 +89,16 @@ namespace TF2Jam.Objective
         private float _meterDist;
         public void UpdateMeterDisplay(float x)
         {
-            _meterDist = x > 5f ? x - 5f : 0f;
-            _timerDisplay.text = $"{_meterDist:0.00}m";
+            if (!DidWin)
+            {
+                _meterDist = x > 5f ? x - 5f : 0f;
+                _timerDisplay.text = $"{_meterDist:0.00}m";
+            }
         }
 
         private void Update()
         {
-            if (!IsDistLevel && IsTimerActive)
+            if (!IsDistLevel && IsTimerActive && !DidWin)
             {
                 _timer += Time.deltaTime;
                 _timerDisplay.text = $"{_timer:0.00}";
@@ -126,6 +129,7 @@ namespace TF2Jam.Objective
 
             _winMenu.SetActive(true);
             _winMenu.GetComponent<VictoryMenu>().Init(_timer);
+            _timerDisplay.text = IsDistLevel ? $"{_timer:0.00}m" : $"{_timer:0.00}";
 
             if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier)
             {
