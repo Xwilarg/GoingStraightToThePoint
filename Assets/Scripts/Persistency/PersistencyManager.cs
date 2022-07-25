@@ -67,7 +67,7 @@ namespace TF2Jam.Persistency
             Save();
         }
 
-        public void FinishLevel(string key, float time)
+        public void FinishLevel(string key, float time, bool isDist)
         {
             var data = GetLevelData(key.EndsWith('H') ? key[..^1] : key);
             if (key == "1-3")
@@ -86,7 +86,7 @@ namespace TF2Jam.Persistency
                 }
                 else
                 {
-                    if (data.BestTime < 0f || time < data.BestTime)
+                    if (data.BestTime < 0f || (!isDist && time < data.BestTime) || (isDist && time > data.BestTime))
                     {
                         data.BestTime = time;
                     }

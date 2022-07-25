@@ -132,11 +132,13 @@ namespace TF2Jam.Objective
                 var levelName = SceneManager.GetActiveScene().name;
                 var isHard = levelName.EndsWith('H');
                 var data = PersistencyManager.Instance.GetLevelData(isHard ? levelName[..^1] : levelName);
-                if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
+                if ((isHard ? data.BestHardTime : data.BestTime) < 0f ||
+                    (!IsDistLevel && _timer < (isHard ? data.BestHardTime : data.BestTime)) ||
+                    (IsDistLevel && _timer > data.BestTime))
                 {
                     _newRecord.gameObject.SetActive(true);
                 }
-                PersistencyManager.Instance.FinishLevel(levelName, _timer);
+                PersistencyManager.Instance.FinishLevel(levelName, _timer, IsDistLevel);
                 var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
                 var target = isHard ? tMed.Hard : tMed.Easy;
 

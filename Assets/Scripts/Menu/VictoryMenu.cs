@@ -11,7 +11,7 @@ namespace TF2Jam.Menu
 
         public void Init(float timer)
         {
-            _timerText.text = ObjectiveUI.Instance.IsDistLevel ? $"{timer:0.0m}" : $"{timer:0.00}";
+            _timerText.text = ObjectiveUI.Instance.IsDistLevel ? $"{timer:0.00m}" : $"{timer:0.00}";
         }
     }
 }
