@@ -76,7 +76,7 @@ namespace TF2Jam.Menu
         {
             PersistencyManager.Instance.CurrentClass = PersistencyManager.Instance.CurrentClass switch
             {
-                PlayerClass.Soldier => PlayerClass.Demoman,
+                PlayerClass.Soldier => PersistencyManager.Instance.GetLevelData("3-3").IsHardModeUnlocked ? PlayerClass.Demoman : PlayerClass.Engineer,
                 PlayerClass.Demoman => PersistencyManager.Instance.AllowAdditionalClasses ? PlayerClass.Engineer : PlayerClass.Soldier,
                 PlayerClass.Engineer => PlayerClass.Soldier
             };
