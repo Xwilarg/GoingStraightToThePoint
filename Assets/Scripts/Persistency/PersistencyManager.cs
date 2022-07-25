@@ -114,6 +114,8 @@ namespace TF2Jam.Persistency
         public bool IsBGMActive { set; get; } = true;
         public bool IsSoundsActive { set; get; } = true;
 
+        public bool AllowAdditionalClasses { set; get; }
+
         private SaveData _saveData;
         private string _path;
     }

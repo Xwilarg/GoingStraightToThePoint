@@ -1,5 +1,4 @@
-﻿using TF2Jam.Audio;
-using TF2Jam.Persistency;
+﻿using TF2Jam.Persistency;
 using TF2Jam.Player;
 using TF2Jam.Translation;
 using TMPro;
@@ -18,13 +17,16 @@ namespace TF2Jam.Menu
         private Image _emblemDisplay;
 
         [SerializeField]
-        private Sprite _emblemSoldier, _emblemDemoman;
+        private Sprite _emblemSoldier, _emblemDemoman, _emblemEngineer;
 
         [SerializeField]
         private TMP_Text _currentClassText;
 
         [SerializeField]
         private TMP_Text _bgmX, _soundsX;
+
+        [SerializeField]
+        private GameObject _expClassButton;
 
         private void Awake()
         {
@@ -37,12 +39,30 @@ namespace TF2Jam.Menu
                 UpdateClassDisplay();
             }
             UpdateSoundsDisplay();
+
+            if (PersistencyManager.Instance.AllowAdditionalClasses)
+            {
+                _expClassButton.gameObject.SetActive(false);
+            }
         }
 
         private void UpdateClassDisplay()
         {
-            _emblemDisplay.sprite = PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _emblemSoldier : _emblemDemoman;
-            _currentClassText.text = PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? "Soldier" : "Demoman";
+            if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier)
+            {
+                _emblemDisplay.sprite = _emblemSoldier;
+                _currentClassText.text = "Soldier";
+            }
+            else if (PersistencyManager.Instance.CurrentClass == PlayerClass.Demoman)
+            {
+                _emblemDisplay.sprite = _emblemDemoman;
+                _currentClassText.text = "Demoman";
+            }
+            else if (PersistencyManager.Instance.CurrentClass == PlayerClass.Engineer)
+            {
+                _emblemDisplay.sprite = _emblemEngineer;
+                _currentClassText.text = "Engineer";
+            }
         }
 
         private void UpdateSoundsDisplay()
@@ -54,7 +74,12 @@ namespace TF2Jam.Menu
 
         public void NextClass()
         {
-            PersistencyManager.Instance.CurrentClass = PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? PlayerClass.Demoman : PlayerClass.Soldier;
+            PersistencyManager.Instance.CurrentClass = PersistencyManager.Instance.CurrentClass switch
+            {
+                PlayerClass.Soldier => PlayerClass.Demoman,
+                PlayerClass.Demoman => PersistencyManager.Instance.AllowAdditionalClasses ? PlayerClass.Engineer : PlayerClass.Soldier,
+                PlayerClass.Engineer => PlayerClass.Soldier
+            };
             UpdateClassDisplay();
         }
 
@@ -88,6 +113,13 @@ namespace TF2Jam.Menu
         {
             PersistencyManager.Instance.IsSoundsActive = !PersistencyManager.Instance.IsSoundsActive;
             UpdateSoundsDisplay();
+        }
+
+        public void ActivateExperimentalClasses()
+        {
+            _expClassButton.gameObject.SetActive(false);
+            PersistencyManager.Instance.AllowAdditionalClasses = true;
+            _modeToggle.gameObject.SetActive(true);
         }
     }
 }

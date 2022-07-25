@@ -23,6 +23,9 @@
     "goldAt": "Or a {0}",
 
     "language": "Langue",
+    "audio": "Audio",
+    "dangerZone": "Zone Dangereuse",
+    "expClasses": "Debloquer les classes experimentales",
     "deleteData": "Supprimer toutes les donnees",
     "finalWarning": "Etes vous sure?\nCela ne peux pas etre annule",
 
