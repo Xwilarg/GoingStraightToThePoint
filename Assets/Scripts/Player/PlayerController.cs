@@ -79,6 +79,10 @@ namespace TF2Jam.Player
             {
                 if (IsOnFloor(out string _))
                 {
+                    if (ObjectiveUI.Instance.IsDistLevel && transform.position.x > 5f)
+                    {
+                        ObjectiveUI.Instance.TriggerGameEnd();
+                    }
                     _rb.velocity = new Vector2(_info.Speed * Time.deltaTime * _mov, _rb.velocity.y);
                     _anim.SetBool("IsWalking", _rb.velocity.x != 0f);
                 }
@@ -110,7 +114,19 @@ namespace TF2Jam.Player
             }
             if (transform.position.y < -5f)
             {
-                ResetPos();
+                if (ObjectiveUI.Instance.IsDistLevel)
+                {
+                    ObjectiveUI.Instance.TriggerGameEnd();
+                }
+                else
+                {
+                    ResetPos();
+                }
+            }
+
+            if (ObjectiveUI.Instance.IsDistLevel)
+            {
+                ObjectiveUI.Instance.UpdateMeterDisplay(transform.position.x);
             }
         }
 

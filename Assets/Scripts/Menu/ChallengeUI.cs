@@ -1,7 +1,6 @@
 ﻿using TF2Jam.Persistency;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TF2Jam.Menu
 {
@@ -23,7 +22,7 @@ namespace TF2Jam.Menu
             var time = PersistencyManager.Instance.GetLevelData(_level).BestTime;
             if (time > 0f)
             {
-                _timerText.text = $"{time:0.00}";
+                _timerText.text = _level == "4-3" ? $"{time:0.00}m" : $"{time:0.00}";
                 _timerText.gameObject.SetActive(true);
             }
         }

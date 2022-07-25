@@ -60,6 +60,8 @@ namespace TF2Jam.Objective
 
         private int _index;
 
+        public bool IsDistLevel { set; get; }
+
         private void Start()
         {
             _controlPoints = GameObject.FindGameObjectsWithTag("ControlPoint")
@@ -76,12 +78,24 @@ namespace TF2Jam.Objective
                 obj.UI = ui.GetComponent<Image>();
             }
 
-            _controlPoints[0].UI.sprite = _sprUnlocked;
+            if (_controlPoints.Any())
+            {
+                _controlPoints[0].UI.sprite = _sprUnlocked;
+            }
+
+            IsDistLevel = SceneManager.GetActiveScene().name == "4-3";
+        }
+
+        private float _meterDist;
+        public void UpdateMeterDisplay(float x)
+        {
+            _meterDist = x > 5f ? x - 5f : 0f;
+            _timerDisplay.text = $"{_meterDist:0.00}m";
         }
 
         private void Update()
         {
-            if (IsTimerActive)
+            if (!IsDistLevel && IsTimerActive)
             {
                 _timer += Time.deltaTime;
                 _timerDisplay.text = $"{_timer:0.00}";
@@ -91,11 +105,68 @@ namespace TF2Jam.Objective
         public void ResetTimer()
         {
             _timer = 0f;
-            _timerDisplay.text = "0.00";
+            _timerDisplay.text = IsDistLevel ? "0.00m" : "0.00";
             IsTimerActive = false;
         }
 
         public Vector2? LatestCaptured => _index == 0 ? null : ((Vector2)_controlPoints[_index - 1].CP.transform.position + Vector2.up); // TODO: Fix pos if index is 0
+
+        public void TriggerGameEnd()
+        {
+            foreach (var pc in GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<PlayerController>()))
+            {
+                pc.DidWin = true;
+            }
+            DidWin = true;
+
+            if (IsDistLevel)
+            {
+                _timer = _meterDist;
+            }
+
+            _winMenu.SetActive(true);
+            _winMenu.GetComponent<VictoryMenu>().Init(_timer);
+
+            if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier)
+            {
+                var levelName = SceneManager.GetActiveScene().name;
+                var isHard = levelName.EndsWith('H');
+                var data = PersistencyManager.Instance.GetLevelData(isHard ? levelName[..^1] : levelName);
+                if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
+                {
+                    _newRecord.gameObject.SetActive(true);
+                }
+                PersistencyManager.Instance.FinishLevel(levelName, _timer);
+                var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
+                var target = isHard ? tMed.Hard : tMed.Easy;
+
+                if (target < 0f)
+                {
+                    _medalContainer.SetActive(false);
+                }
+                else
+                {
+                    if (_timer < target)
+                    {
+                        _goldMedal.color = Color.white;
+                        _silverMedal.color = Color.white;
+                    }
+                    else if (_timer < target + MedalManager.GetSilver(target))
+                    {
+                        _silverMedal.color = Color.white;
+                        _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                    }
+                    else
+                    {
+                        _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
+                    }
+                }
+            }
+            else
+            {
+                _medalContainer.SetActive(false);
+            }
+        }
 
         public bool Capture(ControlPoint cp)
         {
@@ -110,54 +181,7 @@ namespace TF2Jam.Objective
                 }
                 else // We got all CP
                 {
-                    foreach (var pc in GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<PlayerController>()))
-                    {
-                        pc.DidWin = true;
-                    }
-                    DidWin = true;
-
-                    _winMenu.SetActive(true);
-                    _winMenu.GetComponent<VictoryMenu>().Init(_timer);
-
-                    if (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier)
-                    {
-                        var levelName = SceneManager.GetActiveScene().name;
-                        var isHard = levelName.EndsWith('H');
-                        var data = PersistencyManager.Instance.GetLevelData(isHard ? levelName[..^1] : levelName);
-                        if ((isHard ? data.BestHardTime : data.BestTime) < 0f || _timer < (isHard ? data.BestHardTime : data.BestTime))
-                        {
-                            _newRecord.gameObject.SetActive(true);
-                        }
-                        PersistencyManager.Instance.FinishLevel(levelName, _timer);
-                        var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
-                        var target = isHard ? tMed.Hard : tMed.Easy;
-
-                        if (target < 0f)
-                        {
-                            _medalContainer.SetActive(false);
-                        }
-                        else
-                        {
-                            if (_timer < target)
-                            {
-                                _goldMedal.color = Color.white;
-                                _silverMedal.color = Color.white;
-                            }
-                            else if (_timer < target + MedalManager.GetSilver(target))
-                            {
-                                _silverMedal.color = Color.white;
-                                _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
-                            }
-                            else
-                            {
-                                _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        _medalContainer.SetActive(false);
-                    }
+                    TriggerGameEnd();
                 }
                 return true;
             }

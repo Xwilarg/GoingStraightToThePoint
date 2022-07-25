@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using TF2Jam.Objective;
+using TMPro;
 using UnityEngine;
 
 namespace TF2Jam.Menu
@@ -10,7 +11,7 @@ namespace TF2Jam.Menu
 
         public void Init(float timer)
         {
-            _timerText.text = $"{timer:0.00}";
+            _timerText.text = ObjectiveUI.Instance.IsDistLevel ? $"{timer:0.0m}" : $"{timer:0.00}";
         }
     }
 }
