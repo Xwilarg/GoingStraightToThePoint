@@ -131,19 +131,27 @@ namespace TF2Jam.Objective
                         PersistencyManager.Instance.FinishLevel(levelName, _timer);
                         var tMed = MedalManager.Medals[isHard ? levelName[..^1] : levelName];
                         var target = isHard ? tMed.Hard : tMed.Easy;
-                        if (_timer < target)
+
+                        if (target < 0f)
                         {
-                            _goldMedal.color = Color.white;
-                            _silverMedal.color = Color.white;
-                        }
-                        else if (_timer < target + MedalManager.GetSilver(target))
-                        {
-                            _silverMedal.color = Color.white;
-                            _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                            _medalContainer.SetActive(false);
                         }
                         else
                         {
-                            _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
+                            if (_timer < target)
+                            {
+                                _goldMedal.color = Color.white;
+                                _silverMedal.color = Color.white;
+                            }
+                            else if (_timer < target + MedalManager.GetSilver(target))
+                            {
+                                _silverMedal.color = Color.white;
+                                _nextMedalInfo.text = Translate.Instance.Tr("goldAt", $"{target:0.00}");
+                            }
+                            else
+                            {
+                                _nextMedalInfo.text = Translate.Instance.Tr("silverAt", $"{(target + MedalManager.GetSilver(target)):0.00}");
+                            }
                         }
                     }
                     else

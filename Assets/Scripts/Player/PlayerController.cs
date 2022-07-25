@@ -219,7 +219,7 @@ namespace TF2Jam.Player
                     }
                     else if (PersistencyManager.Instance.CurrentClass == PlayerClass.IceFairy)
                     {
-
+                        go.GetComponent<Bullet>().Init(this);
                     }
                     else
                     {
