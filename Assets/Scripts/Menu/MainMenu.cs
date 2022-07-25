@@ -28,6 +28,9 @@ namespace TF2Jam.Menu
         [SerializeField]
         private GameObject _expClassButton;
 
+        [SerializeField]
+        private TMP_Text _helpText;
+
         private void Awake()
         {
             if (!PersistencyManager.Instance.GetLevelData("3-3").IsHardModeUnlocked)
@@ -44,6 +47,18 @@ namespace TF2Jam.Menu
             {
                 _expClassButton.gameObject.SetActive(false);
             }
+        }
+
+        public void ShowHelpText()
+        {
+            _helpText.text = PersistencyManager.Instance.CurrentClass switch
+            {
+                PlayerClass.Soldier => Translate.Instance.Tr("helpSoldier"),
+                PlayerClass.Demoman => Translate.Instance.Tr("helpDemoman"),
+                PlayerClass.Engineer => Translate.Instance.Tr("helpEngineer"),
+                PlayerClass.IceFairy => Translate.Instance.Tr("helpIceFairy"),
+                _ => string.Empty
+            };
         }
 
         private void UpdateClassDisplay()
