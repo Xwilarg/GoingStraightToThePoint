@@ -330,6 +330,14 @@ namespace TF2Jam.Player
             }
         }
 
+        public void OnSoftRestart(InputAction.CallbackContext value)
+        {
+            if (value.performed && !DidWin)
+            {
+                ResetPos();
+            }
+        }
+
         public void OnApplicationFocus(bool focus)
         {
             if (!focus)

@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SoftRestart",
+                    "type": "Button",
+                    "id": "d00b00d9-2b2c-4fe5-afd2-a2f815db81e5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -245,6 +254,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Click2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4aa400ef-bbf8-4a90-b8fe-40453a0e9f9e",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SoftRestart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
