@@ -46,6 +46,7 @@ namespace TF2Jam.Player
                 PlayerClass.Soldier => _info.SoldierAnim,
                 PlayerClass.Demoman => _info.DemomanAnim,
                 PlayerClass.Engineer => _info.EngineerAnim,
+                PlayerClass.IceFairy => _info.IceFairyAnim,
                 _ => null
             };
         }
@@ -194,7 +195,7 @@ namespace TF2Jam.Player
                         go.GetComponent<Rigidbody2D>().AddForce(go.transform.right * (PersistencyManager.Instance.CurrentClass == PlayerClass.Soldier ? _info.RocketSpeed : _info.StickySpeed));
                         go.GetComponent<Bullet>().Init(this);
 
-                        Destroy(go, 10f);
+                        Destroy(go, PersistencyManager.Instance.CurrentClass == PlayerClass.IceFairy ? 20f : 10f);
                         AudioManager.Instance.PlayClip(_info._shootAudio);
 
                         _canShoot = false;
@@ -219,7 +220,7 @@ namespace TF2Jam.Player
                     }
                     else if (PersistencyManager.Instance.CurrentClass == PlayerClass.IceFairy)
                     {
-                        go.GetComponent<Bullet>().Init(this);
+                        go.GetComponent<BulletIce>().Init(this);
                     }
                     else
                     {

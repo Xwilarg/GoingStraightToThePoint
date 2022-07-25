@@ -31,6 +31,7 @@ namespace TF2Jam.SO
         public RuntimeAnimatorController DemomanAnim;
         public RuntimeAnimatorController SoldierAnim;
         public RuntimeAnimatorController EngineerAnim;
+        public RuntimeAnimatorController IceFairyAnim;
 
         public AudioClip _shootAudio;
 
